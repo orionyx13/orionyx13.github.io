@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Her Portfolio</title>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background: linear-gradient(
+        180deg,
+        #f8b6d8 0%,
+        #f6a9c9 40%,
+        #fcd6e6 70%,
+        #ffffff 100%
+    );
+}
+
+/* NAVBAR */
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 8%;
+    background:rgba(255,255,255,0.9);
+    backdrop-filter:blur(10px);
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:bold;
+    color:#d81b60;
+    text-shadow:0 0 10px rgba(216,27,96,0.4);
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    gap:30px;
+}
+
+nav ul li a{
+    text-decoration:none;
+    font-weight:500;
+    color:#555;
+    transition:0.3s;
+}
+
+nav ul li a:hover{
+    color:#d81b60;
+    text-shadow:0 0 8px rgba(216,27,96,0.5);
+}
+
+/* HERO */
+.hero{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:120px 8%;
+    gap:60px;
+    min-height:100vh; /* bikin 1 layar penuh */
+}
+
+.hero-text h1{
+    font-size:55px;
+    color:#d81b60;
+    margin:10px 0;
+    text-shadow:0 0 20px rgba(216,27,96,0.4);
+}
+
+.hero-text h2{
+    font-size:20px;
+    color:#444;
+    height:30px;
+}
+
+.hero-text p{
+    max-width:500px;
+    margin:20px 0;
+    line-height:1.7;
+    color:#555;
+}
+
+.btn{
+    background:#d81b60;
+    color:white;
+    padding:12px 30px;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+    transition:0.3s;
+    box-shadow:0 0 15px rgba(216,27,96,0.4);
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 0 25px rgba(216,27,96,0.7);
+}
+
+.social{
+    margin-top:20px;
+}
+
+.social a{
+    margin-right:15px;
+    font-size:20px;
+    color:#d81b60;
+    transition:0.3s;
+}
+
+.social a:hover{
+    text-shadow:0 0 10px rgba(216,27,96,0.7);
+}
+
+/* IMAGE */
+.hero-img img{
+    width:380px;
+    border-radius:120px 40px 120px 40px;
+    box-shadow:0 0 30px rgba(216,27,96,0.4);
+    animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-15px);}
+    100%{transform:translateY(0);}
+}
+
+/* ABOUT SECTION (hidden dulu) */
+.about-section{
+    margin-top:100px;
+    padding:120px 8%;
+    background:rgba(255,255,255,0.6);
+    backdrop-filter:blur(15px);
+    border-radius:120px 120px 0 0;
+    box-shadow:0 -30px 80px rgba(216,27,96,0.25);
+
+    transform:translateY(80px);
+    opacity:0;
+    transition:1s ease;
+}
+
+.about-section.show{
+    transform:translateY(0);
+    opacity:1;
+}
+
+.about-container{
+    display:flex;
+    align-items:center;
+    gap:60px;
+}
+
+.about-img img{
+    width:350px;
+    border-radius:120px 40px 120px 40px;
+    box-shadow:0 0 30px rgba(216,27,96,0.4);
+}
+
+.about-text h2{
+    font-size:40px;
+    color:#d81b60;
+    text-shadow:0 0 15px rgba(216,27,96,0.4);
+}
+
+.about-text h3{
+    color:#f06292;
+    margin:10px 0 20px;
+}
+
+.about-text p{
+    line-height:1.7;
+    color:#555;
+    margin-bottom:25px;
+}
+
+.quote{
+    background:#ffe3ef;
+    padding:20px;
+    border-left:5px solid #d81b60;
+    border-radius:15px;
+    font-style:italic;
+    margin-bottom:25px;
+    box-shadow:0 0 20px rgba(216,27,96,0.2);
+}
+
+.timeline-btn{
+    background:linear-gradient(to right,#ff4d88,#d81b60);
+    color:white;
+    padding:12px 30px;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+    transition:0.3s;
+    box-shadow:0 0 15px rgba(216,27,96,0.5);
+}
+
+.timeline-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 0 30px rgba(216,27,96,0.8);
+}
+
+@media(max-width:900px){
+    .hero,
+    .about-container{
+        flex-direction:column;
+        text-align:center;
+    }
+}
+</style>
+</head>
+<body>
+
+<nav>
+    <div class="logo">fiiselfi</div>
+    <ul>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#">Timeline</a></li>
+        <li><a href="#">Gallery</a></li>
+        <li><a href="#">Experience</a></li>
+    </ul>
+</nav>
+
+<div class="hero">
+    <div class="hero-text">
+        <small>My Personal Profile</small>
+        <h1>Selfi Anggreani</h1>
+        <h2 id="typing"></h2>
+        <p>
+           Halo! Aku orangnya ceria dan suka mencoba hal baru.
+           Aku menikmati waktu bersama orang-orang terdekat dan
+           suka hal-hal random yang bikin hidup makin seru.
+        </p>
+
+        <button class="btn">Learn More</button>
+
+        <div class="social">
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+
+    <div class="hero-img">
+        <img src="https://i.imgur.com/2i5bOP3.jpeg">
+    </div>
+</div>
+
+<section id="about" class="about-section">
+    <div class="about-container">
+        <div class="about-img">
+            <img src="https://i.imgur.com/2i5bOP3.jpeg">
+        </div>
+
+        <div class="about-text">
+            <h2>Welcome</h2>
+            <h3>About Me</h3>
+            <p>
+                Aku orangnya super random dan penuh cerita.
+                Suka ngobrol panjang, berbagi cerita seru,
+                dan kadang jadi pusat informasi dadakan 😆
+                Hidup itu terlalu singkat untuk gak ketawa dan
+                melakukan hal-hal spontan.
+            </p>
+
+            <div class="quote">
+                "Random itu bukan aneh,
+                tapi cara unik menikmati hidup."
+            </div>
+
+            <button class="timeline-btn">View Gallery</button>
+        </div>
+    </div>
+</section>
+
+<script>
+const text = "Penggosip • Random • Gak Jelas";
+let i = 0;
+
+function typing(){
+    if(i < text.length){
+        document.getElementById("typing").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typing, 70);
+    }
+}
+typing();
+
+/* reveal animation */
+const about = document.querySelector(".about-section");
+
+window.addEventListener("scroll", () => {
+    const trigger = window.innerHeight * 0.85;
+    const top = about.getBoundingClientRect().top;
+
+    if(top < trigger){
+        about.classList.add("show");
+    }
+});
+</script>
+
+</body>
+  </html>
