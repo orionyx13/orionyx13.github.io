@@ -6,6 +6,7 @@
 <title>Profile Selfi Anggreani</title>
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
 <style>
 *{
@@ -17,6 +18,7 @@
 
 html{
     scroll-behavior:smooth;
+    scroll-snap-type: y mandatory; /* Efek magnet per halaman */
 }
 
 body{
@@ -37,7 +39,8 @@ nav{
     padding:18px 8%;
     background:rgba(255,255,255,0.85);
     backdrop-filter:blur(10px);
-    position:sticky;
+    position:fixed;
+    width: 100%;
     top:0;
     z-index:1000;
 }
@@ -65,15 +68,23 @@ nav ul li a:hover{
     color:#d81b60;
 }
 
-/* HERO FIX */
-.hero{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:70px 8%;
-    gap:50px;
-    min-height:90vh;
-    position:relative;
+/* SECTION SETUP */
+section, .hero {
+    height: 100vh;
+    scroll-snap-align: start;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 8%;
+}
+
+/* HERO */
+.hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    width: 100%;
 }
 
 .hero-text h1{
@@ -103,6 +114,8 @@ nav ul li a:hover{
     border-radius:30px;
     cursor:pointer;
     transition:0.3s;
+    text-decoration: none;
+    display: inline-block;
 }
 
 .btn:hover{
@@ -115,13 +128,14 @@ nav ul li a:hover{
 
 .social a{
     margin-right:15px;
-    font-size:20px;
+    font-size:24px;
     color:#d81b60;
     transition:0.3s;
 }
 
 .social a:hover{
     transform:scale(1.2);
+    color: #ad1457;
 }
 
 /* IMAGE */
@@ -140,16 +154,15 @@ nav ul li a:hover{
 
 /* ABOUT */
 .about-section{
-    padding:120px 8%;
     background:rgba(255,255,255,0.6);
     backdrop-filter:blur(15px);
-    border-radius:100px 100px 0 0;
 }
 
 .about-container{
     display:flex;
     align-items:center;
     gap:60px;
+    width: 100%;
 }
 
 .about-img img{
@@ -177,11 +190,10 @@ nav ul li a:hover{
 
 /* GALLERY */
 .gallery{
-    padding:120px 8%;
+    flex-direction: column;
 }
 
 .gallery h2{
-    text-align:center;
     font-size:40px;
     color:#d81b60;
     margin-bottom:50px;
@@ -191,35 +203,29 @@ nav ul li a:hover{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
     gap:25px;
+    width: 100%;
 }
 
 .gallery-grid img{
     width:100%;
+    height: 300px;
+    object-fit: cover;
     border-radius:25px;
     transition:0.3s;
     box-shadow:0 10px 30px rgba(0,0,0,0.1);
 }
 
-.gallery-grid img:hover{
-    transform:scale(1.05);
-}
-
 /* MOBILE */
 @media(max-width:900px){
-    .hero,
-    .about-container{
+    .hero-container, .about-container{
         flex-direction:column;
         text-align:center;
     }
-
-    .hero{
-        min-height:auto;
-        padding:50px 8%;
+    section, .hero{
+        height: auto;
+        padding: 100px 8%;
     }
-
-    .hero-img img{
-        width:260px;
-    }
+    .hero-img img{ width:260px; }
 }
 </style>
 </head>
@@ -234,37 +240,38 @@ nav ul li a:hover{
 </nav>
 
 <div class="hero">
-    <div class="hero-text">
-        <small>My Personal Profile</small>
-        <h1>Selfi Anggreani</h1>
-        <h2 id="typing"></h2>
-        <p>
-           Halo! Aku orangnya ceria dan suka mencoba hal baru. 
-            Aku menikmati waktu bersama 
-           orang-orang terdekat dan suka hal-hal random yang bikin hidup makin seru
-        </p>
+    <div class="hero-container">
+        <div class="hero-text" data-aos="fade-right">
+            <small>My Personal Profile</small>
+            <h1>Selfi Anggreani</h1>
+            <h2 id="typing"></h2>
+            <p>
+               Halo! Aku orangnya ceria dan suka mencoba hal baru. 
+               Aku menikmati waktu bersama orang-orang terdekat dan suka hal-hal random yang bikin hidup makin seru
+            </p>
 
-        <button class="btn">Scroll Down</button>
+            <a href="#about" class="btn">Scroll Down</a>
 
-        <div class="social">
-            <a href="https://wa.me/628XXXXXXXXXX" target="_blank"><i class="fab fa-whatsapp"></i></a>
-            <a href="#"><i class="fab fa-tiktok"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
+            <div class="social">  
+                <a href="https://wa.me/6281249540088" target="_blank"><i class="fab fa-whatsapp"></i></a>  
+                <a href="https://tiktok.com/@selllfiiiiii" target="_blank"><i class="fab fa-tiktok"></i></a>  
+                <a href="https://instagram.com/anggrreaa" target="_blank"><i class="fab fa-instagram"></i></a>  
+            </div>  
         </div>
-    </div>
 
-    <div class="hero-img">
-        <img src="https://i.imgur.com/2i5bOP3.jpeg">
+        <div class="hero-img" data-aos="zoom-in">
+            <img src="https://i.imgur.com/2i5bOP3.jpeg">
+        </div>
     </div>
 </div>
 
 <section id="about" class="about-section">
     <div class="about-container">
-        <div class="about-img">
+        <div class="about-img" data-aos="fade-up">
             <img src="https://i.imgur.com/2i5bOP3.jpeg">
         </div>
 
-        <div class="about-text">
+        <div class="about-text" data-aos="fade-left">
             <h2>About Me</h2>
             <p>
                 Aku orangnya super random dan penuh cerita. Suka ngobrol panjang, 
@@ -280,27 +287,30 @@ nav ul li a:hover{
 </section>
 
 <section id="gallery" class="gallery">
-    <h2>My Gallery</h2>
+    <h2 data-aos="fade-down">My Gallery</h2>
     <div class="gallery-grid">
-        <img src="https://i.imgur.com/2i5bOP3.jpeg">
-        <img src="https://i.imgur.com/2i5bOP3.jpeg">
-        <img src="https://i.imgur.com/2i5bOP3.jpeg">
-        <img src="https://i.imgur.com/2i5bOP3.jpeg">
+        <img src="https://i.imgur.com/2i5bOP3.jpeg" data-aos="flip-left">
+        <img src="https://i.imgur.com/2i5bOP3.jpeg" data-aos="flip-left" data-aos-delay="100">
+        <img src="https://i.imgur.com/2i5bOP3.jpeg" data-aos="flip-left" data-aos-delay="200">
+        <img src="https://i.imgur.com/2i5bOP3.jpeg" data-aos="flip-left" data-aos-delay="300">
     </div>
 </section>
 
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-const text = "Penggosip • Random • Gak Jelas";
-let i = 0;
+    AOS.init({ duration: 1000 });
 
-function typing(){
-    if(i < text.length){
-        document.getElementById("typing").innerHTML += text.charAt(i);
-        i++;
-        setTimeout(typing, 70);
+    const text = "Penggosip • Random • Gak Jelas";
+    let i = 0;
+
+    function typing(){
+        if(i < text.length){
+            document.getElementById("typing").innerHTML += text.charAt(i);
+            i++;
+            setTimeout(typing, 70);
+        }
     }
-}
-typing();
+    typing();
 </script>
 
 </body>
