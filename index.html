@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Her Portfolio</title>
+<title>Profile Selfi Anggreani</title>
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
@@ -25,7 +25,7 @@ body{
         #f8b6d8 0%,
         #f6a9c9 40%,
         #fcd6e6 70%,
-        #ffffff 100%
+        #ffeef5 100%
     );
 }
 
@@ -34,8 +34,8 @@ nav{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:20px 8%;
-    background:rgba(255,255,255,0.9);
+    padding:18px 8%;
+    background:rgba(255,255,255,0.85);
     backdrop-filter:blur(10px);
     position:sticky;
     top:0;
@@ -46,13 +46,12 @@ nav{
     font-size:22px;
     font-weight:bold;
     color:#d81b60;
-    text-shadow:0 0 10px rgba(216,27,96,0.4);
 }
 
 nav ul{
     list-style:none;
     display:flex;
-    gap:30px;
+    gap:25px;
 }
 
 nav ul li a{
@@ -64,24 +63,23 @@ nav ul li a{
 
 nav ul li a:hover{
     color:#d81b60;
-    text-shadow:0 0 8px rgba(216,27,96,0.5);
 }
 
-/* HERO */
+/* HERO FIX */
 .hero{
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding:120px 8%;
-    gap:60px;
-    min-height:100vh; /* bikin 1 layar penuh */
+    padding:70px 8%;
+    gap:50px;
+    min-height:90vh;
+    position:relative;
 }
 
 .hero-text h1{
-    font-size:55px;
+    font-size:50px;
     color:#d81b60;
     margin:10px 0;
-    text-shadow:0 0 20px rgba(216,27,96,0.4);
 }
 
 .hero-text h2{
@@ -105,12 +103,10 @@ nav ul li a:hover{
     border-radius:30px;
     cursor:pointer;
     transition:0.3s;
-    box-shadow:0 0 15px rgba(216,27,96,0.4);
 }
 
 .btn:hover{
     transform:translateY(-3px);
-    box-shadow:0 0 25px rgba(216,27,96,0.7);
 }
 
 .social{
@@ -125,40 +121,29 @@ nav ul li a:hover{
 }
 
 .social a:hover{
-    text-shadow:0 0 10px rgba(216,27,96,0.7);
+    transform:scale(1.2);
 }
 
 /* IMAGE */
 .hero-img img{
-    width:380px;
+    width:360px;
     border-radius:120px 40px 120px 40px;
-    box-shadow:0 0 30px rgba(216,27,96,0.4);
+    box-shadow:0 15px 40px rgba(216,27,96,0.3);
     animation:float 4s ease-in-out infinite;
 }
 
 @keyframes float{
     0%{transform:translateY(0);}
-    50%{transform:translateY(-15px);}
+    50%{transform:translateY(-12px);}
     100%{transform:translateY(0);}
 }
 
-/* ABOUT SECTION (hidden dulu) */
+/* ABOUT */
 .about-section{
-    margin-top:100px;
     padding:120px 8%;
     background:rgba(255,255,255,0.6);
     backdrop-filter:blur(15px);
-    border-radius:120px 120px 0 0;
-    box-shadow:0 -30px 80px rgba(216,27,96,0.25);
-
-    transform:translateY(80px);
-    opacity:0;
-    transition:1s ease;
-}
-
-.about-section.show{
-    transform:translateY(0);
-    opacity:1;
+    border-radius:100px 100px 0 0;
 }
 
 .about-container{
@@ -168,26 +153,18 @@ nav ul li a:hover{
 }
 
 .about-img img{
-    width:350px;
+    width:320px;
     border-radius:120px 40px 120px 40px;
-    box-shadow:0 0 30px rgba(216,27,96,0.4);
 }
 
 .about-text h2{
-    font-size:40px;
+    font-size:38px;
     color:#d81b60;
-    text-shadow:0 0 15px rgba(216,27,96,0.4);
-}
-
-.about-text h3{
-    color:#f06292;
-    margin:10px 0 20px;
 }
 
 .about-text p{
+    margin:20px 0;
     line-height:1.7;
-    color:#555;
-    margin-bottom:25px;
 }
 
 .quote{
@@ -196,31 +173,52 @@ nav ul li a:hover{
     border-left:5px solid #d81b60;
     border-radius:15px;
     font-style:italic;
-    margin-bottom:25px;
-    box-shadow:0 0 20px rgba(216,27,96,0.2);
 }
 
-.timeline-btn{
-    background:linear-gradient(to right,#ff4d88,#d81b60);
-    color:white;
-    padding:12px 30px;
-    border:none;
-    border-radius:30px;
-    cursor:pointer;
+/* GALLERY */
+.gallery{
+    padding:120px 8%;
+}
+
+.gallery h2{
+    text-align:center;
+    font-size:40px;
+    color:#d81b60;
+    margin-bottom:50px;
+}
+
+.gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.gallery-grid img{
+    width:100%;
+    border-radius:25px;
     transition:0.3s;
-    box-shadow:0 0 15px rgba(216,27,96,0.5);
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
 }
 
-.timeline-btn:hover{
-    transform:translateY(-3px);
-    box-shadow:0 0 30px rgba(216,27,96,0.8);
+.gallery-grid img:hover{
+    transform:scale(1.05);
 }
 
+/* MOBILE */
 @media(max-width:900px){
     .hero,
     .about-container{
         flex-direction:column;
         text-align:center;
+    }
+
+    .hero{
+        min-height:auto;
+        padding:50px 8%;
+    }
+
+    .hero-img img{
+        width:260px;
     }
 }
 </style>
@@ -230,10 +228,8 @@ nav ul li a:hover{
 <nav>
     <div class="logo">fiiselfi</div>
     <ul>
-        <li><a href="#about">About Me</a></li>
-        <li><a href="#">Timeline</a></li>
-        <li><a href="#">Gallery</a></li>
-        <li><a href="#">Experience</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#gallery">Gallery</a></li>
     </ul>
 </nav>
 
@@ -243,15 +239,15 @@ nav ul li a:hover{
         <h1>Selfi Anggreani</h1>
         <h2 id="typing"></h2>
         <p>
-           Halo! Aku orangnya ceria dan suka mencoba hal baru.
-           Aku menikmati waktu bersama orang-orang terdekat dan
-           suka hal-hal random yang bikin hidup makin seru.
+           Halo! Aku orangnya ceria dan suka mencoba hal baru. 
+            Aku menikmati waktu bersama 
+           orang-orang terdekat dan suka hal-hal random yang bikin hidup makin seru
         </p>
 
-        <button class="btn">Learn More</button>
+        <button class="btn">Scroll Down</button>
 
         <div class="social">
-            <a href="#"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://wa.me/628XXXXXXXXXX" target="_blank"><i class="fab fa-whatsapp"></i></a>
             <a href="#"><i class="fab fa-tiktok"></i></a>
             <a href="#"><i class="fab fa-instagram"></i></a>
         </div>
@@ -269,23 +265,27 @@ nav ul li a:hover{
         </div>
 
         <div class="about-text">
-            <h2>Welcome</h2>
-            <h3>About Me</h3>
+            <h2>About Me</h2>
             <p>
-                Aku orangnya super random dan penuh cerita.
-                Suka ngobrol panjang, berbagi cerita seru,
-                dan kadang jadi pusat informasi dadakan 😆
-                Hidup itu terlalu singkat untuk gak ketawa dan
-                melakukan hal-hal spontan.
+                Aku orangnya super random dan penuh cerita. Suka ngobrol panjang, 
+                berbagi cerita seru, dan kadang jadi pusat informasi dadakan, Hidup itu terlalu singkat 
+                untuk gak ketawa dan melakukan hal-hal spontan.
             </p>
 
             <div class="quote">
-                "Random itu bukan aneh,
-                tapi cara unik menikmati hidup."
+                "Random itu bukan aneh, tapi cara unik menikmati hidup."
             </div>
-
-            <button class="timeline-btn">View Gallery</button>
         </div>
+    </div>
+</section>
+
+<section id="gallery" class="gallery">
+    <h2>My Gallery</h2>
+    <div class="gallery-grid">
+        <img src="https://i.imgur.com/2i5bOP3.jpeg">
+        <img src="https://i.imgur.com/2i5bOP3.jpeg">
+        <img src="https://i.imgur.com/2i5bOP3.jpeg">
+        <img src="https://i.imgur.com/2i5bOP3.jpeg">
     </div>
 </section>
 
@@ -301,19 +301,7 @@ function typing(){
     }
 }
 typing();
-
-/* reveal animation */
-const about = document.querySelector(".about-section");
-
-window.addEventListener("scroll", () => {
-    const trigger = window.innerHeight * 0.85;
-    const top = about.getBoundingClientRect().top;
-
-    if(top < trigger){
-        about.classList.add("show");
-    }
-});
 </script>
 
 </body>
-  </html>
+</html>
