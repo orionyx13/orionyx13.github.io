@@ -18,13 +18,20 @@
 
 html {
     scroll-behavior: smooth;
-    /* Efek magnet: berhenti tepat di setiap satu layar */
-    scroll-snap-type: y mandatory;
+    scroll-snap-type: y mandatory; /* Efek magnet per layar */
 }
 
 body {
-    background: #fbc6d9;
+    background: #fbc6d9; /* Pink sesuai gambar */
     overflow-x: hidden;
+}
+
+/* ORNAMEN BACKGROUND */
+.decor {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0.3;
+    z-index: 0;
 }
 
 /* NAVBAR */
@@ -33,8 +40,6 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 20px 8%;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
     position: fixed;
     width: 100%;
     top: 0;
@@ -43,16 +48,16 @@ nav {
 
 .logo { font-size: 24px; font-weight: bold; color: #d81b60; }
 nav ul { list-style: none; display: flex; gap: 30px; }
-nav ul li a { text-decoration: none; font-weight: 500; color: #444; }
+nav ul li a { text-decoration: none; font-weight: 500; color: #444; font-size: 14px; }
 
-/* SETINGAN PER HALAMAN (FULL SCREEN) */
+/* LAYOUT PER LAYAR */
 section {
     height: 100vh;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    scroll-snap-align: start; /* Magnet berhenti di sini */
+    scroll-snap-align: start;
     padding: 0 10%;
     position: relative;
 }
@@ -63,18 +68,19 @@ section {
     justify-content: space-between;
     width: 100%;
     max-width: 1200px;
+    z-index: 1;
 }
 
-/* TEXT SIDE */
+/* TEXT */
 .text-side { flex: 1; }
-.text-side h1 { font-size: 60px; color: #d81b60; line-height: 1.1; margin: 10px 0; }
-.text-side h2 { font-size: 22px; color: #555; margin-bottom: 20px; }
-.text-side p { color: #555; line-height: 1.6; margin-bottom: 30px; font-size: 17px; }
+.text-side h1 { font-size: 55px; color: #d81b60; line-height: 1.1; margin: 10px 0; }
+.text-side h2 { font-size: 20px; color: #555; margin-bottom: 20px; }
+.text-side p { color: #555; line-height: 1.6; margin-bottom: 25px; font-size: 16px; }
 
 .btn {
     background: #d81b60;
     color: white;
-    padding: 15px 40px;
+    padding: 12px 35px;
     border-radius: 50px;
     text-decoration: none;
     font-weight: 600;
@@ -82,37 +88,38 @@ section {
     transition: 0.3s;
 }
 
-.social { margin-top: 30px; display: flex; gap: 20px; }
-.social a { color: #d81b60; font-size: 24px; transition: 0.3s; }
+.social { margin-top: 25px; display: flex; gap: 15px; }
+.social a { color: #d81b60; font-size: 20px; }
 
-/* IMAGE SIDE - Frame Asli */
+/* IMAGE FRAME ASLI */
 .img-side img {
-    width: 400px;
-    height: 500px;
+    width: 380px;
+    height: 480px;
     object-fit: cover;
-    border-radius: 150px 50px 150px 50px;
-    box-shadow: 25px 25px 0px rgba(216, 27, 96, 0.1);
+    border-radius: 120px 40px 120px 40px; /* Sesuai frame gambarmu */
+    box-shadow: 20px 20px 50px rgba(0,0,0,0.1);
 }
 
 /* GALLERY GRID */
+.gallery-content { width: 100%; text-align: center; }
 .grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
-    width: 100%;
+    margin-top: 40px;
 }
 .grid img {
     width: 100%;
-    height: 350px;
+    aspect-ratio: 1/1;
     object-fit: cover;
     border-radius: 30px;
 }
 
-/* MOBILE RESPONSIVE */
+/* RESPONSIVE */
 @media (max-width: 900px) {
     section { height: auto; min-height: 100vh; padding: 100px 5%; scroll-snap-align: none; }
     .container { flex-direction: column; text-align: center; }
-    .img-side img { width: 280px; height: 380px; margin-top: 30px; }
+    .img-side img { width: 280px; height: 350px; margin-top: 30px; }
     .grid { grid-template-columns: repeat(2, 1fr); }
 }
 </style>
@@ -128,6 +135,9 @@ section {
 </nav>
 
 <section id="home">
+    <i class="fas fa-star decor" style="top:20%; left:10%; font-size:30px; color:#d81b60;"></i>
+    <i class="fas fa-leaf decor" style="bottom:15%; right:5%; font-size:50px; color:#d81b60; transform:rotate(-20deg);"></i>
+    
     <div class="container" data-aos="fade-up">
         <div class="text-side">
             <small>My Personal Profile</small>
@@ -148,14 +158,16 @@ section {
 </section>
 
 <section id="about" style="background: #ffdae9;">
-    <div class="container" data-aos="fade-up" data-aos-duration="1500">
+    <i class="fas fa-quote-left decor" style="top:15%; left:15%; font-size:60px; color:#d81b60;"></i>
+    
+    <div class="container" data-aos="fade-up" data-aos-duration="1200">
         <div class="img-side">
-            <img src="https://i.imgur.com/2i5bOP3.jpeg" style="width: 350px; height: 450px;">
+            <img src="https://i.imgur.com/2i5bOP3.jpeg" style="border-radius: 50% 50% 10px 10px; width:320px; height:420px;">
         </div>
-        <div class="text-side" style="margin-left: 50px;">
-            <h1>About Me</h1>
+        <div class="text-side" style="padding-left: 50px;">
+            <h1 style="font-size: 40px;">About Me</h1>
             <p>Aku orangnya super random dan penuh cerita. Suka ngobrol panjang, berbagi cerita seru, dan kadang jadi pusat informasi dadakan.</p>
-            <div style="background:white; padding:20px; border-left:8px solid #d81b60; font-style:italic; border-radius:10px;">
+            <div style="background:rgba(255,255,255,0.5); padding:20px; border-left:6px solid #d81b60; font-style:italic; border-radius:10px;">
                 "Random itu bukan aneh, tapi cara unik menikmati hidup."
             </div>
         </div>
@@ -163,10 +175,9 @@ section {
 </section>
 
 <section id="gallery">
-    <div style="width: 100%; text-align: center;" data-aos="fade-up" data-aos-duration="1500">
-        <h1 style="color: #d81b60; margin-bottom: 40px;">My Gallery</h1>
+    <div class="gallery-content" data-aos="fade-up" data-aos-duration="1200">
+        <h1 style="color: #d81b60;">My Gallery</h1>
         <div class="grid">
-            <img src="https://i.imgur.com/2i5bOP3.jpeg">
             <img src="https://i.imgur.com/2i5bOP3.jpeg">
             <img src="https://i.imgur.com/2i5bOP3.jpeg">
             <img src="https://i.imgur.com/2i5bOP3.jpeg">
@@ -176,10 +187,8 @@ section {
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-    // Jalankan AOS
-    AOS.init();
+    AOS.init(); // Inisialisasi animasi scroll
 
-    // Efek Mengetik
     const text = "Penggosip • Random • Gak Jelas";
     let i = 0;
     function typing(){
