@@ -7,226 +7,122 @@
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.12.1/simple-lightbox.min.css" rel="stylesheet">
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins', sans-serif;
-}
-
-html{
-    scroll-behavior:smooth;
-    scroll-snap-type: y mandatory; /* Efek magnet per halaman */
-}
-
-body{
-    background: linear-gradient(
-        180deg,
-        #f8b6d8 0%,
-        #f6a9c9 40%,
-        #fcd6e6 70%,
-        #ffeef5 100%
-    );
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+html{scroll-behavior:smooth;}
+body{background:linear-gradient(180deg,#f8b6d8 0%,#f6a9c9 40%,#fcd6e6 70%,#ffeef5 100%);}
 
 /* NAVBAR */
-nav{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:18px 8%;
-    background:rgba(255,255,255,0.85);
-    backdrop-filter:blur(10px);
-    position:fixed;
-    width: 100%;
-    top:0;
-    z-index:1000;
-}
-
-.logo{
-    font-size:22px;
-    font-weight:bold;
-    color:#d81b60;
-}
-
-nav ul{
-    list-style:none;
-    display:flex;
-    gap:25px;
-}
-
-nav ul li a{
-    text-decoration:none;
-    font-weight:500;
-    color:#555;
-    transition:0.3s;
-}
-
-nav ul li a:hover{
-    color:#d81b60;
-}
+nav{display:flex;justify-content:space-between;align-items:center;padding:18px 8%;background:rgba(255,255,255,0.85);backdrop-filter:blur(10px);position:fixed;width:100%;top:0;z-index:1000;}
+.logo{font-size:22px;font-weight:bold;color:#d81b60;}
+nav ul{list-style:none;display:flex;gap:25px;}
+nav ul li a{text-decoration:none;font-weight:500;color:#555;transition:0.3s;}
+nav ul li a:hover{color:#d81b60;}
 
 /* SECTION SETUP */
-section, .hero {
-    height: 100vh;
-    scroll-snap-align: start;
+section,.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:100px 8%;}
+
+/* HERO */
+.hero-container{display:flex;align-items:center;justify-content:space-between;gap:50px;width:100%;}
+.hero-text h1{font-size:50px;color:#d81b60;margin:10px 0;}
+.hero-text h2{font-size:20px;color:#444;height:30px;}
+.hero-text p{max-width:500px;margin:20px 0;line-height:1.7;color:#555;}
+.btn{background:#d81b60;color:white;padding:12px 30px;border:none;border-radius:30px;cursor:pointer;transition:0.3s;text-decoration:none;display:inline-block;}
+.btn:hover{transform:translateY(-3px);}
+.social{margin-top:20px;}
+.social a{margin-right:15px;font-size:24px;color:#d81b60;transition:0.3s;}
+.social a:hover{transform:scale(1.2);color:#ad1457;}
+.hero-img img{width:360px;border-radius:120px 40px 120px 40px;box-shadow:0 15px 40px rgba(216,27,96,0.3);animation:float 4s ease-in-out infinite;}
+@keyframes float{0%{transform:translateY(0);}50%{transform:translateY(-12px);}100%{transform:translateY(0);}}
+
+/* ABOUT */
+.about-section{background:rgba(255,255,255,0.6);backdrop-filter:blur(15px);}
+.about-container{display:flex;align-items:center;gap:60px;width:100%;}
+.about-img img{width:320px;border-radius:120px 40px 120px 40px;}
+.about-text h2{font-size:38px;color:#d81b60;}
+.about-text p{margin:20px 0;line-height:1.7;}
+.quote{background:#ffe3ef;padding:20px;border-left:5px solid #d81b60;border-radius:15px;font-style:italic;}
+
+/* GALLERY */
+.gallery{flex-direction:column;}
+.gallery h2{font-size:40px;color:#d81b60;margin-bottom:50px;align-self: flex-start;}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;width:100%;}
+.gallery-grid a img{width:100%;height:300px;object-fit:cover;border-radius:25px;transition:0.3s;box-shadow:0 10px 30px rgba(0,0,0,0.1);}
+
+/* MUSIC SECTION FIXED (TIDAK TERLALU GEDE) */
+.music-section{
+    background:#fff0f5;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    min-height: auto; /* Agar tinggi menyesuaikan isi */
+    padding: 80px 8%;
+}
+.music-header {
+    color: #d81b60;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+    border-bottom: 3px solid #d81b60;
+    padding-bottom: 5px;
+}
+.music-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 100%;
+}
+
+/* MUSIC CARD MUNGIL */
+.music-card {
+    background: white;
+    padding: 12px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(216, 27, 96, 0.1);
+    width: 190px;
+    transition: 0.3s;
+}
+.album-art {
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+.album-art img { width: 100%; height: 100%; object-fit: cover; }
+
+.music-info { text-align: left; margin-bottom: 12px; padding: 0 5px; }
+.music-info h3 { color: #d81b60; font-size: 0.9rem; margin-bottom: 2px; }
+.music-info p { color: #777; font-size: 0.75rem; }
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+.ctrl-btn {
+    background: none;
+    border: none;
+    color: #d81b60;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+.play-btn {
+    background: #d81b60;
+    color: white !important;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 8%;
 }
+#audioPlayer { display: none; }
 
-/* HERO */
-.hero-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 50px;
-    width: 100%;
-}
-
-.hero-text h1{
-    font-size:50px;
-    color:#d81b60;
-    margin:10px 0;
-}
-
-.hero-text h2{
-    font-size:20px;
-    color:#444;
-    height:30px;
-}
-
-.hero-text p{
-    max-width:500px;
-    margin:20px 0;
-    line-height:1.7;
-    color:#555;
-}
-
-.btn{
-    background:#d81b60;
-    color:white;
-    padding:12px 30px;
-    border:none;
-    border-radius:30px;
-    cursor:pointer;
-    transition:0.3s;
-    text-decoration: none;
-    display: inline-block;
-}
-
-.btn:hover{
-    transform:translateY(-3px);
-}
-
-.social{
-    margin-top:20px;
-}
-
-.social a{
-    margin-right:15px;
-    font-size:24px;
-    color:#d81b60;
-    transition:0.3s;
-}
-
-.social a:hover{
-    transform:scale(1.2);
-    color: #ad1457;
-}
-
-/* IMAGE */
-.hero-img img{
-    width:360px;
-    border-radius:120px 40px 120px 40px;
-    box-shadow:0 15px 40px rgba(216,27,96,0.3);
-    animation:float 4s ease-in-out infinite;
-}
-
-@keyframes float{
-    0%{transform:translateY(0);}
-    50%{transform:translateY(-12px);}
-    100%{transform:translateY(0);}
-}
-
-/* ABOUT */
-.about-section{
-    background:rgba(255,255,255,0.6);
-    backdrop-filter:blur(15px);
-}
-
-.about-container{
-    display:flex;
-    align-items:center;
-    gap:60px;
-    width: 100%;
-}
-
-.about-img img{
-    width:320px;
-    border-radius:120px 40px 120px 40px;
-}
-
-.about-text h2{
-    font-size:38px;
-    color:#d81b60;
-}
-
-.about-text p{
-    margin:20px 0;
-    line-height:1.7;
-}
-
-.quote{
-    background:#ffe3ef;
-    padding:20px;
-    border-left:5px solid #d81b60;
-    border-radius:15px;
-    font-style:italic;
-}
-
-/* GALLERY */
-.gallery{
-    flex-direction: column;
-}
-
-.gallery h2{
-    font-size:40px;
-    color:#d81b60;
-    margin-bottom:50px;
-}
-
-.gallery-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:25px;
-    width: 100%;
-}
-
-.gallery-grid img{
-    width:100%;
-    height: 300px;
-    object-fit: cover;
-    border-radius:25px;
-    transition:0.3s;
-    box-shadow:0 10px 30px rgba(0,0,0,0.1);
-}
-
-/* MOBILE */
-@media(max-width:900px){
-    .hero-container, .about-container{
-        flex-direction:column;
-        text-align:center;
-    }
-    section, .hero{
-        height: auto;
-        padding: 100px 8%;
-    }
-    .hero-img img{ width:260px; }
-}
+@media(max-width:900px){.hero-container,.about-container{flex-direction:column;text-align:center;}section,.hero{height:auto;padding:80px 8%;}.hero-img img{width:260px;}}
 </style>
 </head>
 <body>
@@ -234,32 +130,27 @@ section, .hero {
 <nav>
     <div class="logo">fiiselfi</div>
     <ul>
-        <li><a href="#about">Profil</a></li>
+        <li><a href="#hero">Profil</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#music">Music</a></li>
     </ul>
 </nav>
 
-<div class="hero">
+<div id="hero" class="hero">
     <div class="hero-container">
         <div class="hero-text" data-aos="fade-right">
             <small>My Personal Profile</small>
             <h1>Selfi Anggreani</h1>
             <h2 id="typing"></h2>
-            <p>
-               Halo! Aku orangnya ceria dan suka mencoba hal baru. 
-               Aku menikmati waktu bersama orang-orang terdekat dan suka hal-hal random yang bikin hidup makin seru
-            </p>
-
+            <p>Halo! Aku orangnya ceria dan suka mencoba hal baru. Aku menikmati waktu bersama orang-orang terdekat dan suka hal-hal random yang bikin hidup makin seru</p>
             <a href="#about" class="btn">Scroll Down</a>
-
             <div class="social">  
                 <a href="https://wa.me/6281249540088" target="_blank"><i class="fab fa-whatsapp"></i></a>  
                 <a href="https://tiktok.com/@selllfiiiiii" target="_blank"><i class="fab fa-tiktok"></i></a>  
                 <a href="https://instagram.com/anggrreaa" target="_blank"><i class="fab fa-instagram"></i></a>  
             </div>  
         </div>
-
         <div class="hero-img" data-aos="zoom-in">
             <img src="https://i.imgur.com/2i5bOP3.jpeg">
         </div>
@@ -271,18 +162,10 @@ section, .hero {
         <div class="about-img" data-aos="fade-up">
             <img src="https://i.imgur.com/7gDBwf3.jpeg">
         </div>
-
         <div class="about-text" data-aos="fade-left">
             <h2>About Me</h2>
-            <p>
-                Aku orangnya super random dan penuh cerita. Suka ngobrol panjang, 
-                berbagi cerita seru, dan kadang jadi pusat informasi dadakan, Hidup itu terlalu singkat 
-                untuk gak ketawa dan melakukan hal-hal spontan.
-            </p>
-
-            <div class="quote">
-                "Random itu bukan aneh, tapi cara unik menikmati hidup."
-            </div>
+            <p>Aku orangnya super random dan penuh cerita. Suka ngobrol panjang, berbagi cerita seru, dan kadang jadi pusat informasi dadakan, Hidup itu terlalu singkat untuk gak ketawa dan melakukan hal-hal spontan.</p>
+            <div class="quote">"Random itu bukan aneh, tapi cara unik menikmati hidup."</div>
         </div>
     </div>
 </section>
@@ -290,31 +173,85 @@ section, .hero {
 <section id="gallery" class="gallery">
     <h2 data-aos="fade-down">My Gallery</h2>
     <div class="gallery-grid">
-        <img src="https://i.imgur.com/2i5bOP3.jpeg" data-aos="flip-left">
-        <img src="https://i.imgur.com/7gDBwf3.jpeg" data-aos="flip-left" data-aos-delay="100">
-        <img src="https://i.imgur.com/762XWTP.jpeg" data-aos="flip-left" data-aos-delay="200">
-        <img src="https://i.imgur.com/gd1zhkP.jpeg" data-aos="flip-left" data-aos-delay="300">
-        <img src="https://i.imgur.com/QtIVZIp.jpeg data-aos="flip-left" data-aos-delay="400">
-        <img src="https://i.imgur.com/6pDyPK9.jpeg" data-aos="flip-left" data-aos-delay="500">
-        <img src="https://i.imgur.com/vwYTfMP.jpeg" data-aos="flip-left" data-aos-delay="600">
+        <a href="https://i.imgur.com/2i5bOP3.jpeg"><img src="https://i.imgur.com/2i5bOP3.jpeg" data-aos="flip-left"></a>
+        <a href="https://i.imgur.com/7gDBwf3.jpeg"><img src="https://i.imgur.com/7gDBwf3.jpeg" data-aos="flip-left" data-aos-delay="100"></a>
+        <a href="https://i.imgur.com/762XWTP.jpeg"><img src="https://i.imgur.com/762XWTP.jpeg" data-aos="flip-left" data-aos-delay="200"></a>
+        <a href="https://i.imgur.com/gd1zhkP.jpeg"><img src="https://i.imgur.com/gd1zhkP.jpeg" data-aos="flip-left" data-aos-delay="300"></a>
+        <a href="https://i.imgur.com/6pDyPK9.jpeg"><img src="https://i.imgur.com/6pDyPK9.jpeg" data-aos="flip-left" data-aos-delay="500"></a>
+        <a href="https://i.imgur.com/vwYTfMP.jpeg"><img src="https://i.imgur.com/vwYTfMP.jpeg" data-aos="flip-left" data-aos-delay="600"></a>
+    </div>
+</section>
+
+<section id="music" class="music-section">
+    <div class="music-header" data-aos="fade-right">Playing Music</div>
+    
+    <div class="music-grid">
+        <div class="music-card" data-aos="zoom-in">
+            <div class="album-art">
+                <img src="https://i.imgur.com/tmgEm81.jpeg" alt="Cover">
+            </div>
+            <div class="music-info">
+                <h3>Blue</h3>
+                <p>Yung Kai</p>
+            </div>
+            
+            <div class="controls">
+                <button class="ctrl-btn" onclick="replay()"><i class="fas fa-redo-alt"></i></button>
+                <button class="ctrl-btn play-btn" onclick="togglePlay()">
+                    <i id="playIcon" class="fas fa-play"></i>
+                </button>
+                <button class="ctrl-btn" onclick="skip10()"><i class="fas fa-forward"></i></button>
+            </div>
+
+            <audio id="audioPlayer">
+                <source src="https://github.com/orionyx13/asetsmsc.github.io/raw/refs/heads/main/yung%20kai%20blue%20Lyrics.mp3" type="audio/mpeg">
+            </audio>
+        </div>
     </div>
 </section>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.12.1/simple-lightbox.min.js"></script>
 <script>
-    AOS.init({ duration: 1000 });
+AOS.init({ duration: 1000 });
 
-    const text = "Penggosip • Random • Gak Jelas";
-    let i = 0;
-
-    function typing(){
-        if(i < text.length){
-            document.getElementById("typing").innerHTML += text.charAt(i);
-            i++;
-            setTimeout(typing, 70);
-        }
+const text = "Penggosip • Random • Gak Jelas";
+let i = 0;
+function typing(){
+    if(i < text.length){
+        document.getElementById("typing").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typing, 70);
     }
-    typing();
+}
+typing();
+
+var lightbox = new SimpleLightbox('.gallery-grid a', { captions: false });
+
+const audio = document.getElementById('audioPlayer');
+const playIcon = document.getElementById('playIcon');
+
+function togglePlay() {
+    if (audio.paused) {
+        audio.play();
+        playIcon.className = 'fas fa-pause';
+    } else {
+        audio.pause();
+        playIcon.className = 'fas fa-play';
+    }
+}
+
+function replay() {
+    audio.currentTime = 0;
+    audio.play();
+    playIcon.className = 'fas fa-pause';
+}
+
+function skip10() {
+    audio.currentTime += 10;
+}
+
+audio.onended = () => { playIcon.className = 'fas fa-play'; };
 </script>
 
 </body>
