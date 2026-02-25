@@ -11,76 +11,67 @@
         
         html { 
             scroll-behavior: smooth; 
-            scroll-snap-type: y mandatory; /* Efek magnet per layar */
+            scroll-snap-type: y mandatory; 
         }
 
         body { background-color: #fbc6d9; overflow-x: hidden; }
 
-        /* NAVBAR & GARIS PUTIH (Jangan diubah) */
+        /* NAVBAR - Putih Bersih */
         nav {
             display: flex; justify-content: space-between; align-items: center;
-            padding: 15px 8%; background: white; width: 100%; position: fixed; top: 0; z-index: 1000;
-            border-bottom: 2px solid #fbc6d9; /* Garis putih/pembatas navbar */
+            padding: 12px 8%; background: white; width: 100%; position: fixed; top: 0; z-index: 1000;
         }
-        .logo { font-size: 20px; font-weight: bold; color: #d81b60; }
+        .logo { font-size: 18px; font-weight: bold; color: #d81b60; }
         nav ul { list-style: none; display: flex; gap: 20px; }
-        nav ul li a { text-decoration: none; color: #555; font-size: 13px; }
+        nav ul li a { text-decoration: none; color: #555; font-size: 12px; }
 
-        /* SECTION FULL PAGE */
+        /* SECTION SETUP */
         section {
             height: 100vh; width: 100%; display: flex; align-items: center;
             justify-content: center; scroll-snap-align: start; padding: 0 10%;
             position: relative;
         }
 
-        /* HERO SECTION (Sesuai Gambar Kamu) */
+        /* ICON HIASAN (Sesuai Gambar) */
+        .icon-decor { position: absolute; pointer-events: none; z-index: 2; color: #d81b60; opacity: 0.6; }
+        
+        /* Layout Hero */
         .container {
             display: flex; align-items: center; justify-content: space-between;
-            width: 100%; max-width: 1100px; margin-top: 50px;
+            width: 100%; max-width: 1100px; z-index: 5;
         }
-        .text-side { flex: 1; position: relative; }
-        .text-side h1 { font-size: 48px; color: #d81b60; line-height: 1.1; margin: 10px 0; }
-        .text-side h2 { font-size: 18px; color: #444; margin-bottom: 15px; }
-        .text-side p { color: #555; line-height: 1.6; font-size: 14px; margin-bottom: 25px; max-width: 400px; }
+
+        .text-side h1 { font-size: 42px; color: #d81b60; line-height: 1.1; margin: 5px 0; }
+        .text-side h2 { font-size: 16px; color: #444; margin-bottom: 15px; }
+        .text-side p { color: #555; font-size: 13px; max-width: 400px; margin-bottom: 20px; }
         
         .btn {
-            background: #d81b60; color: white; padding: 10px 25px;
-            border-radius: 20px; text-decoration: none; font-weight: 600;
-            display: inline-block; font-size: 13px;
+            background: #d81b60; color: white; padding: 8px 25px;
+            border-radius: 20px; text-decoration: none; font-size: 12px; display: inline-block;
         }
 
+        /* Foto dengan Frame & Garis Lengkung */
+        .img-side { position: relative; }
         .img-side img {
-            width: 380px; height: 320px; object-fit: cover;
-            border-radius: 120px 40px 120px 40px; /* Frame Asli */
-            box-shadow: 15px 15px 40px rgba(0,0,0,0.1);
+            width: 350px; height: 280px; object-fit: cover;
+            border-radius: 100px 30px 100px 30px; 
+            box-shadow: 10px 10px 30px rgba(0,0,0,0.1);
+        }
+        /* Garis lengkung di bawah foto */
+        .curve-line {
+            position: absolute; bottom: -20px; right: -20px; width: 100%; height: 100%;
+            border-bottom: 3px solid #d81b60; border-right: 3px solid #d81b60;
+            border-radius: 0 0 40px 0; opacity: 0.3; z-index: -1;
         }
 
-        /* ABOUT SECTION (Muncul dari bawah) */
-        .about-content {
-            display: flex; align-items: center; gap: 40px; width: 100%;
-        }
-        .about-content img {
-            width: 280px; height: 280px; border-radius: 50%; object-fit: cover;
-        }
-        .about-text h2 { color: #d81b60; font-size: 32px; margin-bottom: 15px; }
-        .quote {
-            border-left: 4px solid #d81b60; padding-left: 15px; margin-top: 15px;
-            font-style: italic; color: #d81b60; background: rgba(255,255,255,0.3); padding: 10px;
-        }
-
-        /* GALLERY SECTION (Muncul dari bawah) */
-        .gallery-wrap { text-align: center; width: 100%; }
-        .gallery-wrap h2 { color: #d81b60; margin-bottom: 30px; font-size: 28px; }
-        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+        /* GALLERY GRID */
+        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 30px; }
         .grid img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 20px; }
 
-        /* ORNAMEN (Biar gak kosong) */
-        .decor { position: absolute; pointer-events: none; opacity: 0.3; }
-
         @media (max-width: 850px) {
-            .container, .about-content { flex-direction: column; text-align: center; }
-            .img-side img { width: 260px; height: 220px; margin-top: 20px; }
-            section { height: auto; min-height: 100vh; scroll-snap-align: none; padding: 100px 5% 50px; }
+            section { height: auto; min-height: 100vh; padding: 100px 5%; }
+            .container { flex-direction: column; text-align: center; }
+            .img-side img { width: 280px; height: 220px; margin-top: 30px; }
             .grid { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
@@ -96,35 +87,45 @@
     </nav>
 
     <section id="home">
-        <i class="fas fa-star decor" style="top:25%; left:8%; color:#d81b60; font-size:20px;"></i>
-        <i class="fas fa-leaf decor" style="top:30%; right:12%; color:#d81b60; font-size:40px;"></i>
-        
-        <div class="container">
+        <i class="fas fa-star icon-decor" style="top: 20%; left: 5%; font-size: 25px;"></i>
+        <i class="fas fa-star icon-decor" style="top: 22%; left: 8%; font-size: 15px;"></i>
+        <i class="fas fa-leaf icon-decor" style="top: 25%; right: 10%; font-size: 40px; transform: rotate(20deg);"></i>
+        <i class="far fa-circle icon-decor" style="bottom: 35%; left: 18%; font-size: 15px;"></i>
+        <i class="far fa-circle icon-decor" style="bottom: 33%; left: 21%; font-size: 25px;"></i>
+        <i class="fas fa-seedling icon-decor" style="bottom: 20%; right: 8%; font-size: 35px;"></i>
+
+        <div class="container" data-aos="fade-up">
             <div class="text-side">
                 <small>My Personal Profile</small>
                 <h1>Selfi Anggreani</h1>
                 <h2>Penggosip • Random • Gak Jelas</h2>
                 <p>Halo! Aku orangnya ceria dan suka mencoba hal baru. Aku menikmati waktu bersama orang-orang terdekat dan suka hal-hal random yang bikin hidup makin seru</p>
                 <a href="#about" class="btn">Scroll Down</a>
-                <div style="margin-top:20px; display:flex; gap:15px;">
-                    <a href="#" style="color:#d81b60;"><i class="fab fa-whatsapp"></i></a>
-                    <a href="#" style="color:#d81b60;"><i class="fab fa-tiktok"></i></a>
-                    <a href="#" style="color:#d81b60;"><i class="fab fa-instagram"></i></a>
+                <div style="margin-top:15px; display:flex; gap:12px;">
+                    <i class="fab fa-whatsapp" style="color:#d81b60;"></i>
+                    <i class="fab fa-tiktok" style="color:#d81b60;"></i>
+                    <i class="fab fa-instagram" style="color:#d81b60;"></i>
                 </div>
             </div>
             <div class="img-side">
-                <img src="https://i.imgur.com/2i5bOP3.jpeg" alt="Selfi">
+                <i class="fas fa-star" style="position:absolute; top:40%; left:-10px; color:#ffd700; z-index:10;"></i>
+                <i class="fas fa-star" style="position:absolute; top:20%; right:-10px; color:#ffd700; z-index:10;"></i>
+                <img src="https://i.imgur.com/2i5bOP3.jpeg">
+                <div class="curve-line"></div>
             </div>
         </div>
     </section>
 
-    <section id="about">
-        <div class="about-content" data-aos="fade-up" data-aos-duration="1000">
-            <img src="https://i.imgur.com/2i5bOP3.jpeg">
-            <div class="about-text">
-                <h2>About Me</h2>
-                <p>Aku orangnya super random dan penuh cerita. Suka ngobrol panjang, berbagi cerita seru, dan kadang jadi pusat informasi dadakan.</p>
-                <div class="quote">
+    <section id="about" style="background:#ffeef5;">
+        <i class="fas fa-quote-left icon-decor" style="top:20%; left:12%; font-size:40px;"></i>
+        <div class="container" data-aos="fade-up">
+            <div class="img-side" style="flex: 1;">
+                <img src="https://i.imgur.com/2i5bOP3.jpeg" style="border-radius: 50%; width: 250px; height: 250px;">
+            </div>
+            <div class="text-side" style="flex: 1.5;">
+                <h1 style="font-size: 32px;">About Me</h1>
+                <p>"Halo Aku orangnya ceria dan suka mencoba hal baru. Aku menikmati waktu bersama orang orang terdekat dan suka hal hal random yang bikin hidup makin seru."</p>
+                <div style="font-style: italic; color: #d81b60; border-top: 1px solid #d81b60; padding-top: 10px;">
                     "Random itu bukan aneh, tapi cara unik menikmati hidup."
                 </div>
             </div>
@@ -132,8 +133,8 @@
     </section>
 
     <section id="gallery">
-        <div class="gallery-wrap" data-aos="fade-up" data-aos-duration="1000">
-            <h2>My Gallery</h2>
+        <div class="gallery-wrap" style="width:100%; text-align:center;" data-aos="fade-up">
+            <h2 style="color:#d81b60; margin-bottom: 20px;">My Gallery</h2>
             <div class="grid">
                 <img src="https://i.imgur.com/2i5bOP3.jpeg">
                 <img src="https://i.imgur.com/2i5bOP3.jpeg">
@@ -144,7 +145,7 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init(); // Menjalankan animasi muncul saat scroll
+        AOS.init({ duration: 1000 });
     </script>
 </body>
 </html>
