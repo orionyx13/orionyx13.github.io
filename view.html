@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profile Selfi Anggreani</title>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+    /* Efek magnet: berhenti tepat di setiap satu layar */
+    scroll-snap-type: y mandatory;
+}
+
+body {
+    background: #fbc6d9;
+    overflow-x: hidden;
+}
+
+/* NAVBAR */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo { font-size: 24px; font-weight: bold; color: #d81b60; }
+nav ul { list-style: none; display: flex; gap: 30px; }
+nav ul li a { text-decoration: none; font-weight: 500; color: #444; }
+
+/* SETINGAN PER HALAMAN (FULL SCREEN) */
+section {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    scroll-snap-align: start; /* Magnet berhenti di sini */
+    padding: 0 10%;
+    position: relative;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* TEXT SIDE */
+.text-side { flex: 1; }
+.text-side h1 { font-size: 60px; color: #d81b60; line-height: 1.1; margin: 10px 0; }
+.text-side h2 { font-size: 22px; color: #555; margin-bottom: 20px; }
+.text-side p { color: #555; line-height: 1.6; margin-bottom: 30px; font-size: 17px; }
+
+.btn {
+    background: #d81b60;
+    color: white;
+    padding: 15px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.social { margin-top: 30px; display: flex; gap: 20px; }
+.social a { color: #d81b60; font-size: 24px; transition: 0.3s; }
+
+/* IMAGE SIDE - Frame Asli */
+.img-side img {
+    width: 400px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 150px 50px 150px 50px;
+    box-shadow: 25px 25px 0px rgba(216, 27, 96, 0.1);
+}
+
+/* GALLERY GRID */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 100%;
+}
+.grid img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 30px;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 900px) {
+    section { height: auto; min-height: 100vh; padding: 100px 5%; scroll-snap-align: none; }
+    .container { flex-direction: column; text-align: center; }
+    .img-side img { width: 280px; height: 380px; margin-top: 30px; }
+    .grid { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<nav>
+    <div class="logo">fiiselfi</div>
+    <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+    </ul>
+</nav>
+
+<section id="home">
+    <div class="container" data-aos="fade-up">
+        <div class="text-side">
+            <small>My Personal Profile</small>
+            <h1>Selfi Anggreani</h1>
+            <h2 id="typing"></h2>
+            <p>Halo! Aku orangnya ceria dan suka mencoba hal baru. Aku menikmati waktu bersama orang-orang terdekat dan suka hal-hal random yang bikin hidup makin seru.</p>
+            <a href="#about" class="btn">Scroll Down</a>
+            <div class="social">
+                <a href="https://wa.me/6281249540088" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://tiktok.com/@selllfiiiiii" target="_blank"><i class="fab fa-tiktok"></i></a>
+                <a href="https://instagram.com/anggrreaa" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="img-side">
+            <img src="https://i.imgur.com/2i5bOP3.jpeg">
+        </div>
+    </div>
+</section>
+
+<section id="about" style="background: #ffdae9;">
+    <div class="container" data-aos="fade-up" data-aos-duration="1500">
+        <div class="img-side">
+            <img src="https://i.imgur.com/2i5bOP3.jpeg" style="width: 350px; height: 450px;">
+        </div>
+        <div class="text-side" style="margin-left: 50px;">
+            <h1>About Me</h1>
+            <p>Aku orangnya super random dan penuh cerita. Suka ngobrol panjang, berbagi cerita seru, dan kadang jadi pusat informasi dadakan.</p>
+            <div style="background:white; padding:20px; border-left:8px solid #d81b60; font-style:italic; border-radius:10px;">
+                "Random itu bukan aneh, tapi cara unik menikmati hidup."
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="gallery">
+    <div style="width: 100%; text-align: center;" data-aos="fade-up" data-aos-duration="1500">
+        <h1 style="color: #d81b60; margin-bottom: 40px;">My Gallery</h1>
+        <div class="grid">
+            <img src="https://i.imgur.com/2i5bOP3.jpeg">
+            <img src="https://i.imgur.com/2i5bOP3.jpeg">
+            <img src="https://i.imgur.com/2i5bOP3.jpeg">
+            <img src="https://i.imgur.com/2i5bOP3.jpeg">
+        </div>
+    </div>
+</section>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    // Jalankan AOS
+    AOS.init();
+
+    // Efek Mengetik
+    const text = "Penggosip • Random • Gak Jelas";
+    let i = 0;
+    function typing(){
+        if(i < text.length){
+            document.getElementById("typing").innerHTML += text.charAt(i);
+            i++;
+            setTimeout(typing, 80);
+        }
+    }
+    typing();
+</script>
+
+</body>
+</html>
