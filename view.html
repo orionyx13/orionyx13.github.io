@@ -51,12 +51,14 @@ section,.hero{min-height:100vh;display:flex;align-items:center;justify-content:c
 .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;width:100%;}
 .gallery-grid a img{width:100%;height:300px;object-fit:cover;border-radius:25px;transition:0.3s;box-shadow:0 10px 30px rgba(0,0,0,0.1);}
 
-/* MUSIC SECTION (POJOK KIRI ATAS) */
+/* MUSIC SECTION FIXED (TIDAK TERLALU GEDE) */
 .music-section{
     background:#fff0f5;
     flex-direction: column;
-    align-items: flex-start; /* Konten ke kiri */
+    align-items: flex-start;
     justify-content: flex-start;
+    min-height: auto; /* Agar tinggi menyesuaikan isi */
+    padding: 80px 8%;
 }
 .music-header {
     color: #d81b60;
@@ -79,7 +81,7 @@ section,.hero{min-height:100vh;display:flex;align-items:center;justify-content:c
     padding: 12px;
     border-radius: 20px;
     box-shadow: 0 8px 25px rgba(216, 27, 96, 0.1);
-    width: 200px; /* Ukuran mungil */
+    width: 190px;
     transition: 0.3s;
 }
 .album-art {
@@ -95,13 +97,11 @@ section,.hero{min-height:100vh;display:flex;align-items:center;justify-content:c
 .music-info h3 { color: #d81b60; font-size: 0.9rem; margin-bottom: 2px; }
 .music-info p { color: #777; font-size: 0.75rem; }
 
-/* CONTROLS */
 .controls {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 12px;
-    padding-bottom: 5px;
 }
 .ctrl-btn {
     background: none;
@@ -109,7 +109,6 @@ section,.hero{min-height:100vh;display:flex;align-items:center;justify-content:c
     color: #d81b60;
     font-size: 0.9rem;
     cursor: pointer;
-    transition: 0.2s;
 }
 .play-btn {
     background: #d81b60;
@@ -120,11 +119,9 @@ section,.hero{min-height:100vh;display:flex;align-items:center;justify-content:c
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 10px rgba(216, 27, 96, 0.2);
 }
 #audioPlayer { display: none; }
 
-/* MOBILE */
 @media(max-width:900px){.hero-container,.about-container{flex-direction:column;text-align:center;}section,.hero{height:auto;padding:80px 8%;}.hero-img img{width:260px;}}
 </style>
 </head>
@@ -210,8 +207,7 @@ section,.hero{min-height:100vh;display:flex;align-items:center;justify-content:c
                 <source src="https://github.com/orionyx13/asetsmsc.github.io/raw/refs/heads/main/yung%20kai%20blue%20Lyrics.mp3" type="audio/mpeg">
             </audio>
         </div>
-        
-        </div>
+    </div>
 </section>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -232,7 +228,6 @@ typing();
 
 var lightbox = new SimpleLightbox('.gallery-grid a', { captions: false });
 
-// MUSIC LOGIC
 const audio = document.getElementById('audioPlayer');
 const playIcon = document.getElementById('playIcon');
 
