@@ -1,295 +1,298 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile Selfi Anggreani</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        html { scroll-behavior: smooth; scroll-snap-type: y mandatory; }
-        body { background-color: #fbc6d9; overflow-x: hidden; color: #444; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profile Selfi Anggreani</title>
 
-        /* NAVBAR - Tetap Putih Bersih */
-        nav {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 15px 8%; background: white; width: 100%<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile Selfi Anggreani</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        
-        html { 
-            scroll-behavior: smooth; 
-            scroll-snap-type: y mandatory; 
-        }
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-        body { background-color: #fbc6d9; overflow-x: hidden; }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
 
-        /* NAVBAR - Putih Bersih */
-        nav {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 12px 8%; background: white; width: 100%; position: fixed; top: 0; z-index: 1000;
-            border-bottom: 2px solid #fbc6d9;
-        }
-        .logo { font-size: 18px; font-weight: bold; color: #d81b60; }
-        nav ul { list-style: none; display: flex; gap: 20px; }
-        nav ul li a { text-decoration: none; color: #555; font-size: 12px; }
+html{
+    scroll-behavior:smooth;
+}
 
-        /* SECTION SETUP */
-        section {
-            height: 100vh; width: 100%; display: flex; align-items: center;
-            justify-content: center; scroll-snap-align: start; padding: 0 10%;
-            position: relative;
-        }
+body{
+    background: linear-gradient(
+        180deg,
+        #f8b6d8 0%,
+        #f6a9c9 40%,
+        #fcd6e6 70%,
+        #ffeef5 100%
+    );
+}
 
-        .icon-decor { position: absolute; pointer-events: none; z-index: 2; color: #d81b60; opacity: 0.6; }
-        
-        .container {
-            display: flex; align-items: center; justify-content: space-between;
-            width: 100%; max-width: 1100px; z-index: 5;
-        }
+/* NAVBAR */
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 8%;
+    background:rgba(255,255,255,0.85);
+    backdrop-filter:blur(10px);
+    position:fixed;
+    width:100%;
+    top:0;
+    z-index:1000;
+}
 
-        .text-side h1 { font-size: 42px; color: #d81b60; line-height: 1.1; margin: 5px 0; }
-        .text-side h2 { font-size: 16px; color: #444; margin-bottom: 15px; }
-        .text-side p { color: #555; font-size: 13px; max-width: 400px; margin-bottom: 20px; }
-        
-        .btn {
-            background: #d81b60; color: white; padding: 8px 25px;
-            border-radius: 20px; text-decoration: none; font-size: 12px; display: inline-block;
-        }
+.logo{
+    font-size:22px;
+    font-weight:bold;
+    color:#d81b60;
+}
 
-        /* Foto Hero */
-        .img-side { position: relative; }
-        .img-side img {
-            width: 350px; height: 280px; object-fit: cover;
-            border-radius: 100px 30px 100px 30px; 
-            box-shadow: 10px 10px 30px rgba(0,0,0,0.1);
-        }
-        .curve-line {
-            position: absolute; bottom: -20px; right: -20px; width: 100%; height: 100%;
-            border-bottom: 3px solid #d81b60; border-right: 3px solid #d81b60;
-            border-radius: 0 0 40px 0; opacity: 0.3; z-index: -1;
-        }
+nav ul{
+    list-style:none;
+    display:flex;
+    gap:25px;
+}
 
-        /* SOSMED - Link Aktif */
-        .sosmed-wrap a {
-            color: #d81b60; text-decoration: none; font-size: 18px; transition: 0.3s;
-            display: inline-block;
-        }
-        .sosmed-wrap a:hover { transform: scale(1.2); }
+nav ul li a{
+    text-decoration:none;
+    font-weight:500;
+    color:#555;
+    transition:0.3s;
+}
 
-        /* ABOUT SECTION */
-        .swash-line {
-            position: absolute; width: 120px; height: 30px; border-bottom: 2px solid #d81b60;
-            border-radius: 50%; bottom: -10px; right: 20px; opacity: 0.4;
-        }
+nav ul li a:hover{
+    color:#d81b60;
+}
 
-        /* GALLERY GRID */
-        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 30px; }
-        .grid img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 20px; }
-        .grid-deco { border: 1px dashed #d81b60; border-radius: 20px; display: flex; align-items: center; justify-content: center; }
+/* SECTION FULL SCREEN */
+section{
+    height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:0 8%;
+    position:relative;
+    overflow:hidden;
+}
 
-        @media (max-width: 850px) {
-            section { height: auto; min-height: 100vh; padding: 100px 5%; }
-            .container { flex-direction: column; text-align: center; }
-            .img-side img { width: 280px; height: 220px; margin-top: 30px; }
-            .grid { grid-template-columns: repeat(2, 1fr); }
-        }
-    </style>
+/* HERO */
+.hero-container {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:50px;
+    width:100%;
+}
+
+.hero-text h1{
+    font-size:55px;
+    color:#d81b60;
+    margin:10px 0;
+    text-shadow:0 0 20px rgba(216,27,96,0.4);
+}
+
+.hero-text h2{
+    font-size:20px;
+    color:#444;
+    height:30px;
+}
+
+.hero-text p{
+    max-width:500px;
+    margin:20px 0;
+    line-height:1.7;
+    color:#555;
+}
+
+.btn{
+    background:#d81b60;
+    color:white;
+    padding:12px 30px;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+    transition:0.3s;
+    text-decoration:none;
+    display:inline-block;
+    box-shadow:0 0 15px rgba(216,27,96,0.4);
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 0 25px rgba(216,27,96,0.7);
+}
+
+.social a{
+    margin-right:15px;
+    font-size:24px;
+    color:#d81b60;
+    transition:0.3s;
+}
+
+.social a:hover{
+    transform:scale(1.2);
+    color:#ad1457;
+}
+
+/* IMAGE */
+.hero-img img, .about-img img, .gallery-grid img{
+    width:100%;
+    max-width:500px;
+    border-radius:120px 40px 120px 40px;
+    box-shadow:0 15px 40px rgba(216,27,96,0.3);
+    animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-12px);}
+    100%{transform:translateY(0);}
+}
+
+/* ABOUT */
+.about-container{
+    display:flex;
+    align-items:center;
+    gap:60px;
+    max-width:1200px;
+    margin:auto;
+}
+
+.about-text h2{
+    font-size:40px;
+    color:#d81b60;
+}
+
+.about-text p{
+    margin:20px 0;
+    line-height:1.7;
+}
+
+.quote{
+    background:#ffe3ef;
+    padding:20px;
+    border-left:5px solid #d81b60;
+    border-radius:15px;
+    font-style:italic;
+    box-shadow:0 0 20px rgba(216,27,96,0.2);
+}
+
+/* GALLERY */
+.gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+    width:100%;
+}
+
+.gallery-grid img{
+    height:300px;
+    object-fit:cover;
+    border-radius:25px;
+    transition:0.3s;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+    .hero-container, .about-container{
+        flex-direction:column;
+        text-align:center;
+    }
+    .hero-img img, .about-img img{
+        max-width:300px;
+    }
+}
+</style>
 </head>
 <body>
 
-    <nav>
-        <div class="logo">fiiselfi</div>
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#gallery">Gallery</a></li>
-        </ul>
-    </nav>
+<nav>
+    <div class="logo">fiiselfi</div>
+    <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+    </ul>
+</nav>
 
-    <section id="home">
-        <i class="fas fa-star icon-decor" style="top: 20%; left: 5%; font-size: 25px;"></i>
-        <i class="fas fa-star icon-decor" style="top: 22%; left: 8%; font-size: 15px;"></i>
-        <i class="fas fa-leaf icon-decor" style="top: 25%; right: 10%; font-size: 40px; transform: rotate(20deg);"></i>
-        <i class="far fa-circle icon-decor" style="bottom: 35%; left: 18%; font-size: 15px;"></i>
-        <i class="far fa-circle icon-decor" style="bottom: 33%; left: 21%; font-size: 25px;"></i>
-        <i class="fas fa-seedling icon-decor" style="bottom: 20%; right: 8%; font-size: 35px;"></i>
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-container">
+        <div class="hero-text" data-aos="fade-right">
+            <small>My Personal Profile</small>
+            <h1>Selfi Anggreani</h1>
+            <h2 id="typing"></h2>
+            <p>
+               Halo! Aku orangnya ceria dan suka mencoba hal baru. 
+               Aku menikmati waktu bersama orang-orang terdekat dan suka hal-hal random yang bikin hidup makin seru
+            </p>
 
-        <div class="container" data-aos="fade-up">
-            <div class="text-side">
-                <small>My Personal Profile</small>
-                <h1>Selfi Anggreani</h1>
-                <h2>Penggosip • Random • Gak Jelas</h2>
-                <p>Halo! Aku orangnya ceria dan suka mencoba hal baru. Aku menikmati waktu bersama orang-orang terdekat dan suka hal-hal random yang bikin hidup makin seru</p>
-                <a href="#about" class="btn">Scroll Down</a>
-                
-                <div class="sosmed-wrap" style="margin-top:15px; display:flex; gap:15px;">
-                    <a href="https://wa.me/6281249540088" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                    <a href="https://tiktok.com/@selllfiiiiii" target="_blank"><i class="fab fa-tiktok"></i></a>
-                    <a href="https://instagram.com/anggrreaa" target="_blank"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-            <div class="img-side">
-                <i class="fas fa-star" style="position:absolute; top:40%; left:-10px; color:#ffd700; z-index:10;"></i>
-                <i class="fas fa-star" style="position:absolute; top:20%; right:-10px; color:#ffd700; z-index:10;"></i>
-                <img src="https://i.imgur.com/2i5bOP3.jpeg">
-                <div class="curve-line"></div>
+            <a href="#about" class="btn">Scroll Down</a>
+
+            <div class="social">  
+                <a href="https://wa.me/6281249540088" target="_blank"><i class="fab fa-whatsapp"></i></a>  
+                <a href="https://tiktok.com/@selllfiiiiii" target="_blank"><i class="fab fa-tiktok"></i></a>  
+                <a href="https://instagram.com/anggrreaa" target="_blank"><i class="fab fa-instagram"></i></a>  
+            </div>  
+        </div>
+
+        <div class="hero-img" data-aos="zoom-in">
+            <img src="https://i.imgur.com/2i5bOP3.jpeg">
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+    <div class="about-container">
+        <div class="about-img" data-aos="fade-up">
+            <img src="https://i.imgur.com/2i5bOP3.jpeg">
+        </div>
+
+        <div class="about-text" data-aos="fade-left">
+            <h2>About Me</h2>
+            <p>
+                Aku orangnya super random dan penuh cerita. Suka ngobrol panjang, 
+                berbagi cerita seru, dan kadang jadi pusat informasi dadakan. Hidup itu terlalu singkat 
+                untuk gak ketawa dan melakukan hal-hal spontan.
+            </p>
+
+            <div class="quote">
+                "Random itu bukan aneh, tapi cara unik menikmati hidup."
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="about" style="background:#ffeef5;">
-        <i class="fas fa-quote-left icon-decor" style="top:20%; left:12%; font-size:40px;"></i>
-        <div class="container" data-aos="fade-up">
-            <div class="img-side" style="flex: 1;">
-                <img src="https://i.imgur.com/2i5bOP3.jpeg" style="border-radius: 50%; width: 250px; height: 250px; object-fit: cover;">
-            </div>
-            <div class="text-side" style="flex: 1.5; position: relative;">
-                <h1 style="font-size: 32px;">About Me</h1>
-                <div class="swash-line"></div>
-                <p>"Halo Aku orangnya ceria dan suka mencoba hal baru. Aku menikmati waktu bersama orang orang terdekat dan suka hal hal random yang bikin hidup makin seru."</p>
-                <div style="font-style: italic; color: #d81b60; border-top: 1px solid #d81b60; padding-top: 10px; margin-top: 10px;">
-                    "Random itu bukan aneh, tapi cara unik menikmati hidup."
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- GALLERY -->
+<section id="gallery" class="gallery">
+    <h2 data-aos="fade-down">My Gallery</h2>
+    <div class="gallery-grid">
+        <img src="https://i.imgur.com/2i5bOP3.jpeg" data-aos="flip-left">
+        <img src="https://i.imgur.com/2i5bOP3.jpeg" data-aos="flip-left" data-aos-delay="100">
+        <img src="https://i.imgur.com/2i5bOP3.jpeg" data-aos="flip-left" data-aos-delay="200">
+        <img src="https://i.imgur.com/2i5bOP3.jpeg" data-aos="flip-left" data-aos-delay="300">
+    </div>
+</section>
 
-    <section id="gallery">
-        <div class="gallery-wrap" style="width:100%; text-align:center;" data-aos="fade-up">
-            <h2 style="color:#d81b60; margin-bottom: 20px;">My Gallery</h2>
-            <div class="grid">
-                <img src="https://i.imgur.com/2i5bOP3.jpeg">
-                <div class="grid-deco"><i class="fas fa-heart" style="color:#d81b60; opacity:0.3;"></i></div>
-                <img src="https://i.imgur.com/2i5bOP3.jpeg">
-                <img src="https://i.imgur.com/2i5bOP3.jpeg">
-                <img src="https://i.imgur.com/2i5bOP3.jpeg">
-                <img src="https://i.imgur.com/2i5bOP3.jpeg">
-            </div>
-        </div>
-    </section>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+AOS.init({ duration: 1000 });
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({ duration: 1000, once: false });
-    </script>
-</body>
-</html>; position: fixed; top: 0; z-index: 1000;
-        }
-        .logo { font-size: 18px; font-weight: bold; color: #d81b60; }
-        nav ul { list-style: none; display: flex; gap: 20px; }
-        nav ul li a { text-decoration: none; color: #555; font-size: 12px; }
+const text = "Penggosip • Random • Gak Jelas";
+let i = 0;
 
-        section {
-            height: 100vh; width: 100%; display: flex; align-items: center;
-            justify-content: center; scroll-snap-align: start; padding: 0 10%;
-            position: relative;
-        }
+function typing(){
+    if(i < text.length){
+        document.getElementById("typing").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typing, 70);
+    }
+}
+typing();
+</script>
 
-        .container { display: flex; align-items: center; justify-content: space-between; width: 100%; max-width: 1100px; }
-        
-        /* SOCIAL MEDIA BUTTONS - Sekarang Bisa Dipencet */
-        .social-icons { margin-top: 20px; display: flex; gap: 15px; }
-        .social-icons a { 
-            color: #d81b60; 
-            font-size: 20px; 
-            text-decoration: none; 
-            transition: 0.3s; 
-            cursor: pointer;
-            display: inline-block;
-        }
-        .social-icons a:hover { transform: scale(1.2); color: #ad1457; }
-
-        /* HERO IMAGE */
-        .hero-img { position: relative; }
-        .hero-img img { width: 340px; border-radius: 100px 30px 100px 30px; box-shadow: 10px 10px 30px rgba(0,0,0,0.1); }
-        .star-gold { position: absolute; color: #ffd700; z-index: 10; font-size: 20px; }
-
-        /* ABOUT SECTION */
-        .about-box { display: flex; align-items: center; gap: 40px; text-align: left; }
-        .about-img-wrap img { width: 280px; height: 280px; border-radius: 50%; object-fit: cover; }
-        .about-text { position: relative; max-width: 450px; }
-        .swash-line { position: absolute; width: 150px; height: 40px; border-bottom: 2px solid #d81b60; border-radius: 50%; bottom: -10px; right: -50px; opacity: 0.4; }
-        .quote-icon { font-size: 40px; color: #d81b60; opacity: 0.3; }
-
-        /* GALLERY SECTION */
-        .grid-layout { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 20px; }
-        .grid-item img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 20px; }
-
-        @media (max-width: 850px) {
-            section { height: auto; min-height: 100vh; padding: 100px 5% 50px; }
-            .container, .about-box { flex-direction: column; text-align: center; }
-            .grid-layout { grid-template-columns: repeat(2, 1fr); }
-        }
-    </style>
-</head>
-<body>
-
-    <nav>
-        <div class="logo">fiiselfi</div>
-        <ul><li><a href="#about">About</a></li><li><a href="#gallery">Gallery</a></li></ul>
-    </nav>
-
-    <section id="home">
-        <div class="container" data-aos="fade-up">
-            <div class="text-side">
-                <small>My Personal Profile</small>
-                <h1 style="color:#d81b60">Selfi Anggreani</h1>
-                <h2 style="font-weight:600">Penggosip • Random • Gak Jelas</h2>
-                <p>Halo! Aku orangnya ceria dan suka mencoba hal baru. Aku menikmati waktu bersama orang-orang terdekat dan suka hal-hal random yang bikin hidup makin seru</p>
-                <a href="#about" style="background:#d81b60; color:white; padding:10px 25px; border-radius:20px; text-decoration:none; font-size:13px; display:inline-block;">Scroll Down</a>
-                
-                <div class="social-icons">
-                    <a href="https://wa.me/6281249540088" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                    <a href="https://tiktok.com/@selllfiiiiii" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
-                    <a href="https://instagram.com/anggrreaa" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-            <div class="hero-img">
-                <i class="fas fa-star star-gold" style="top:40%; left:-15px;"></i>
-                <i class="fas fa-star star-gold" style="top:20%; right:-15px;"></i>
-                <img src="https://i.imgur.com/2i5bOP3.jpeg">
-            </div>
-        </div>
-    </section>
-
-    <section id="about">
-        <div class="about-box" data-aos="fade-up">
-            <div class="about-img-wrap">
-                <img src="https://i.imgur.com/2i5bOP3.jpeg">
-            </div>
-            <div class="about-text">
-                <i class="fas fa-quote-left quote-icon"></i>
-                <h2>About Me</h2>
-                <div class="swash-line"></div>
-                <p>"Halo! Aku orangnya ceria dan suka mencoba hal baru. Aku menikmati waktu bersama orang-orang terdekat dan suka hal-hal random yang bikin hidup makin seru."</p>
-                <i class="fas fa-quote-right quote-icon" style="float:right;"></i>
-            </div>
-        </div>
-    </section>
-
-    <section id="gallery">
-        <div class="gallery-wrap" data-aos="fade-up" style="width:100%; text-align:center;">
-            <h2 style="color:#d81b60;">My Gallery</h2>
-            <div class="grid-layout">
-                <div class="grid-item"><img src="https://i.imgur.com/2i5bOP3.jpeg"></div>
-                <div class="grid-item"><img src="https://i.imgur.com/2i5bOP3.jpeg"></div>
-                <div class="grid-item"><img src="https://i.imgur.com/2i5bOP3.jpeg"></div>
-                <div class="grid-item"><img src="https://i.imgur.com/2i5bOP3.jpeg"></div>
-                <div class="grid-item"><img src="https://i.imgur.com/2i5bOP3.jpeg"></div>
-                <div class="grid-item"><img src="https://i.imgur.com/2i5bOP3.jpeg"></div>
-            </div>
-        </div>
-    </section>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>AOS.init({ duration: 1200 });</script>
 </body>
 </html>
