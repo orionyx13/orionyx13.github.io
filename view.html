@@ -1,205 +1,167 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Profile Selfi Anggreani</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Selfi Anggreani</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        
+        html { 
+            scroll-behavior: smooth; 
+            scroll-snap-type: y mandatory; /* Magnet scroll per halaman */
+        }
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        body { background-color: #fbc6d9; overflow-x: hidden; }
 
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins', sans-serif;
-}
+        /* NAVBAR */
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 8%; position: fixed; width: 100%; top: 0; z-index: 1000;
+        }
+        .logo { font-size: 22px; font-weight: bold; color: #d81b60; }
+        nav ul { list-style: none; display: flex; gap: 20px; }
+        nav ul li a { text-decoration: none; color: #444; font-size: 14px; }
 
-html {
-    scroll-behavior: smooth;
-    scroll-snap-type: y mandatory; /* Efek magnet per layar */
-}
+        /* DECORATIONS (Bunga & Bintang) */
+        .decor { position: absolute; pointer-events: none; opacity: 0.4; z-index: 0; }
 
-body {
-    background: #fbc6d9; /* Pink sesuai gambar */
-    overflow-x: hidden;
-}
+        /* SECTION FULL PAGE */
+        section {
+            height: 100vh; width: 100%; display: flex; align-items: center;
+            justify-content: center; scroll-snap-align: start; padding: 0 10%;
+            position: relative;
+        }
 
-/* ORNAMEN BACKGROUND */
-.decor {
-    position: absolute;
-    pointer-events: none;
-    opacity: 0.3;
-    z-index: 0;
-}
+        .container {
+            display: flex; align-items: center; justify-content: space-between;
+            width: 100%; max-width: 1100px; z-index: 1;
+        }
 
-/* NAVBAR */
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 8%;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-}
+        /* TEXT SIDE */
+        .text-side { flex: 1; }
+        .text-side small { color: #555; font-size: 12px; font-weight: 600; }
+        .text-side h1 { font-size: 50px; color: #d81b60; line-height: 1.2; margin: 5px 0; }
+        .text-side h2 { font-size: 18px; color: #444; margin-bottom: 15px; font-weight: 600; }
+        .text-side p { color: #555; line-height: 1.6; font-size: 15px; margin-bottom: 25px; max-width: 450px; }
 
-.logo { font-size: 24px; font-weight: bold; color: #d81b60; }
-nav ul { list-style: none; display: flex; gap: 30px; }
-nav ul li a { text-decoration: none; font-weight: 500; color: #444; font-size: 14px; }
+        .btn {
+            background: #d81b60; color: white; padding: 10px 25px;
+            border-radius: 20px; text-decoration: none; font-weight: 600;
+            display: inline-block; font-size: 14px; transition: 0.3s;
+        }
 
-/* LAYOUT PER LAYAR */
-section {
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    scroll-snap-align: start;
-    padding: 0 10%;
-    position: relative;
-}
+        .social { margin-top: 20px; display: flex; gap: 15px; }
+        .social a { color: #d81b60; font-size: 18px; }
 
-.container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 1200px;
-    z-index: 1;
-}
+        /* IMAGE SIDE (Sesuai Screenshot) */
+        .img-side { flex: 1; display: flex; justify-content: flex-end; position: relative; }
+        .img-side img {
+            width: 380px; height: 380px; object-fit: cover;
+            border-radius: 120px 40px 120px 40px; /* Frame Khas */
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
 
-/* TEXT */
-.text-side { flex: 1; }
-.text-side h1 { font-size: 55px; color: #d81b60; line-height: 1.1; margin: 10px 0; }
-.text-side h2 { font-size: 20px; color: #555; margin-bottom: 20px; }
-.text-side p { color: #555; line-height: 1.6; margin-bottom: 25px; font-size: 16px; }
+        /* ABOUT SECTION */
+        .about-section { background-color: #ffeef5; border-radius: 80px 80px 0 0; }
+        .about-container { display: flex; align-items: center; gap: 50px; width: 100%; }
+        
+        .quote-box {
+            background: transparent; border: 1px solid #d81b60;
+            padding: 15px; border-radius: 15px; margin-top: 20px;
+            font-style: italic; font-size: 14px; color: #d81b60;
+        }
 
-.btn {
-    background: #d81b60;
-    color: white;
-    padding: 12px 35px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 600;
-    display: inline-block;
-    transition: 0.3s;
-}
+        /* GALLERY SECTION */
+        .gallery-container { width: 100%; text-align: center; }
+        .gallery-container h2 { color: #d81b60; font-size: 30px; margin-bottom: 30px; }
+        .grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;
+        }
+        .grid img {
+            width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 20px;
+        }
 
-.social { margin-top: 25px; display: flex; gap: 15px; }
-.social a { color: #d81b60; font-size: 20px; }
-
-/* IMAGE FRAME ASLI */
-.img-side img {
-    width: 380px;
-    height: 480px;
-    object-fit: cover;
-    border-radius: 120px 40px 120px 40px; /* Sesuai frame gambarmu */
-    box-shadow: 20px 20px 50px rgba(0,0,0,0.1);
-}
-
-/* GALLERY GRID */
-.gallery-content { width: 100%; text-align: center; }
-.grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    margin-top: 40px;
-}
-.grid img {
-    width: 100%;
-    aspect-ratio: 1/1;
-    object-fit: cover;
-    border-radius: 30px;
-}
-
-/* RESPONSIVE */
-@media (max-width: 900px) {
-    section { height: auto; min-height: 100vh; padding: 100px 5%; scroll-snap-align: none; }
-    .container { flex-direction: column; text-align: center; }
-    .img-side img { width: 280px; height: 350px; margin-top: 30px; }
-    .grid { grid-template-columns: repeat(2, 1fr); }
-}
-</style>
+        /* MOBILE FIX */
+        @media (max-width: 850px) {
+            section { height: auto; min-height: 100vh; padding: 80px 5%; scroll-snap-align: none; }
+            .container, .about-container { flex-direction: column; text-align: center; }
+            .img-side { justify-content: center; margin-top: 30px; }
+            .img-side img { width: 280px; height: 280px; }
+            .grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
 </head>
 <body>
 
-<nav>
-    <div class="logo">fiiselfi</div>
-    <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-    </ul>
-</nav>
+    <nav>
+        <div class="logo">fiiselfi</div>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+        </ul>
+    </nav>
 
-<section id="home">
-    <i class="fas fa-star decor" style="top:20%; left:10%; font-size:30px; color:#d81b60;"></i>
-    <i class="fas fa-leaf decor" style="bottom:15%; right:5%; font-size:50px; color:#d81b60; transform:rotate(-20deg);"></i>
-    
-    <div class="container" data-aos="fade-up">
-        <div class="text-side">
-            <small>My Personal Profile</small>
-            <h1>Selfi Anggreani</h1>
-            <h2 id="typing"></h2>
-            <p>Halo! Aku orangnya ceria dan suka mencoba hal baru. Aku menikmati waktu bersama orang-orang terdekat dan suka hal-hal random yang bikin hidup makin seru.</p>
-            <a href="#about" class="btn">Scroll Down</a>
-            <div class="social">
-                <a href="https://wa.me/6281249540088" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                <a href="https://tiktok.com/@selllfiiiiii" target="_blank"><i class="fab fa-tiktok"></i></a>
-                <a href="https://instagram.com/anggrreaa" target="_blank"><i class="fab fa-instagram"></i></a>
+    <section id="home">
+        <i class="fas fa-star decor" style="top: 25%; left: 5%; color: #d81b60; font-size: 20px;"></i>
+        <i class="fas fa-leaf decor" style="top: 30%; right: 10%; color: #d81b60; font-size: 40px; transform: rotate(20deg);"></i>
+        <i class="fas fa-circle decor" style="bottom: 20%; left: 15%; color: #d81b60; font-size: 15px;"></i>
+
+        <div class="container" data-aos="fade-up">
+            <div class="text-side">
+                <small>My Personal Profile</small>
+                <h1>Selfi Anggreani</h1>
+                <h2>Penggosip • Random • Gak Jelas</h2>
+                <p>Halo! Aku orangnya ceria dan suka mencoba hal baru. Aku menikmati waktu bersama orang-orang terdekat dan suka hal-hal random yang bikin hidup makin seru</p>
+                <a href="#about" class="btn">Scroll Down</a>
+                <div class="social">
+                    <a href="https://wa.me/6281249540088"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://tiktok.com/@selllfiiiiii"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://instagram.com/anggrreaa"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="img-side">
+                <img src="https://i.imgur.com/2i5bOP3.jpeg" alt="Selfi">
             </div>
         </div>
-        <div class="img-side">
-            <img src="https://i.imgur.com/2i5bOP3.jpeg">
-        </div>
-    </div>
-</section>
+    </section>
 
-<section id="about" style="background: #ffdae9;">
-    <i class="fas fa-quote-left decor" style="top:15%; left:15%; font-size:60px; color:#d81b60;"></i>
-    
-    <div class="container" data-aos="fade-up" data-aos-duration="1200">
-        <div class="img-side">
-            <img src="https://i.imgur.com/2i5bOP3.jpeg" style="border-radius: 50% 50% 10px 10px; width:320px; height:420px;">
-        </div>
-        <div class="text-side" style="padding-left: 50px;">
-            <h1 style="font-size: 40px;">About Me</h1>
-            <p>Aku orangnya super random dan penuh cerita. Suka ngobrol panjang, berbagi cerita seru, dan kadang jadi pusat informasi dadakan.</p>
-            <div style="background:rgba(255,255,255,0.5); padding:20px; border-left:6px solid #d81b60; font-style:italic; border-radius:10px;">
-                "Random itu bukan aneh, tapi cara unik menikmati hidup."
+    <section id="about" class="about-section">
+        <i class="fas fa-quote-left decor" style="top: 15%; left: 8%; font-size: 40px; color: #d81b60;"></i>
+        
+        <div class="about-container" data-aos="fade-up" data-aos-delay="200">
+            <div class="img-side">
+                <img src="https://i.imgur.com/2i5bOP3.jpeg" style="width: 320px; height: 320px; border-radius: 120px 40px 120px 40px;">
+            </div>
+            <div class="text-side">
+                <h1 style="font-size: 35px;">About Me</h1>
+                <p>Aku orangnya super random dan penuh cerita. Suka ngobrol panjang, berbagi cerita seru, dan kadang jadi pusat informasi dadakan, Hidup itu terlalu singkat untuk gak ketawa dan melakukan hal-hal spontan.</p>
+                <div class="quote-box">
+                    "Random itu bukan aneh, tapi cara unik menikmati hidup."
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section id="gallery">
-    <div class="gallery-content" data-aos="fade-up" data-aos-duration="1200">
-        <h1 style="color: #d81b60;">My Gallery</h1>
-        <div class="grid">
-            <img src="https://i.imgur.com/2i5bOP3.jpeg">
-            <img src="https://i.imgur.com/2i5bOP3.jpeg">
-            <img src="https://i.imgur.com/2i5bOP3.jpeg">
+    <section id="gallery">
+        <div class="gallery-container" data-aos="fade-up" data-aos-delay="200">
+            <h2>My Gallery</h2>
+            <div class="grid">
+                <img src="https://i.imgur.com/2i5bOP3.jpeg">
+                <img src="https://i.imgur.com/2i5bOP3.jpeg">
+                <img src="https://i.imgur.com/2i5bOP3.jpeg">
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-    AOS.init(); // Inisialisasi animasi scroll
-
-    const text = "Penggosip • Random • Gak Jelas";
-    let i = 0;
-    function typing(){
-        if(i < text.length){
-            document.getElementById("typing").innerHTML += text.charAt(i);
-            i++;
-            setTimeout(typing, 80);
-        }
-    }
-    typing();
-</script>
-
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: false, // Animasi akan jalan setiap kali di-scroll ulang
+        });
+    </script>
 </body>
 </html>
