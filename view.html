@@ -24,9 +24,8 @@ body{
     background: linear-gradient(
         180deg,
         #f8b6d8 0%,
-        #f6a9c9 40%,
-        #fcd6e6 70%,
-        #ffeef5 100%
+        #f6a9c9 50%,
+        #fcd6e6 100%
     );
 }
 
@@ -48,6 +47,7 @@ nav{
     font-size:22px;
     font-weight:bold;
     color:#d81b60;
+    text-shadow:0 0 10px rgba(216,27,96,0.4);
 }
 
 nav ul{
@@ -67,31 +67,41 @@ nav ul li a:hover{
     color:#d81b60;
 }
 
-/* SECTION FULL SCREEN */
+/* SECTION */
 section{
     height:100vh;
     display:flex;
     align-items:center;
     justify-content:center;
     padding:0 8%;
-    position:relative;
-    overflow:hidden;
 }
 
-/* HERO */
-.hero-container {
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:50px;
+/* HERO & ABOUT */
+.hero, .about{
     width:100%;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+}
+
+.hero .hero-img img,
+.about .about-img img{
+    width:100%;
+    border-radius:120px 40px 120px 40px;
+    box-shadow:0 15px 40px rgba(216,27,96,0.3);
+    animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-12px);}
+    100%{transform:translateY(0);}
 }
 
 .hero-text h1{
-    font-size:55px;
+    font-size:50px;
     color:#d81b60;
-    margin:10px 0;
-    text-shadow:0 0 20px rgba(216,27,96,0.4);
+    text-shadow:0 0 15px rgba(216,27,96,0.4);
 }
 
 .hero-text h2{
@@ -101,8 +111,6 @@ section{
 }
 
 .hero-text p{
-    max-width:500px;
-    margin:20px 0;
     line-height:1.7;
     color:#555;
 }
@@ -115,14 +123,15 @@ section{
     border-radius:30px;
     cursor:pointer;
     transition:0.3s;
-    text-decoration:none;
-    display:inline-block;
-    box-shadow:0 0 15px rgba(216,27,96,0.4);
 }
 
 .btn:hover{
     transform:translateY(-3px);
     box-shadow:0 0 25px rgba(216,27,96,0.7);
+}
+
+.social{
+    margin-top:20px;
 }
 
 .social a{
@@ -137,73 +146,34 @@ section{
     color:#ad1457;
 }
 
-/* IMAGE */
-.hero-img img, .about-img img, .gallery-grid img{
-    width:100%;
-    max-width:500px;
-    border-radius:120px 40px 120px 40px;
-    box-shadow:0 15px 40px rgba(216,27,96,0.3);
-    animation:float 4s ease-in-out infinite;
-}
-
-@keyframes float{
-    0%{transform:translateY(0);}
-    50%{transform:translateY(-12px);}
-    100%{transform:translateY(0);}
-}
-
 /* ABOUT */
-.about-container{
-    display:flex;
-    align-items:center;
-    gap:60px;
-    max-width:1200px;
-    margin:auto;
+.about-section{
+    background:rgba(255,255,255,0.6);
+    backdrop-filter:blur(15px);
+    border-radius:120px 120px 0 0;
+    box-shadow:0 -30px 80px rgba(216,27,96,0.25);
+    padding:60px;
 }
 
-.about-text h2{
-    font-size:40px;
-    color:#d81b60;
-}
-
-.about-text p{
-    margin:20px 0;
-    line-height:1.7;
-}
-
+/* QUOTE */
 .quote{
     background:#ffe3ef;
     padding:20px;
     border-left:5px solid #d81b60;
     border-radius:15px;
     font-style:italic;
+    margin-top:20px;
     box-shadow:0 0 20px rgba(216,27,96,0.2);
-}
-
-/* GALLERY */
-.gallery-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:25px;
-    width:100%;
-}
-
-.gallery-grid img{
-    height:300px;
-    object-fit:cover;
-    border-radius:25px;
-    transition:0.3s;
 }
 
 /* RESPONSIVE */
 @media(max-width:900px){
-    .hero-container, .about-container{
-        flex-direction:column;
+    .hero, .about{
+        grid-template-columns:1fr;
         text-align:center;
+        gap:30px;
     }
-    .hero-img img, .about-img img{
-        max-width:300px;
-    }
+    .hero-img img, .about-img img{width:260px;}
 }
 </style>
 </head>
@@ -213,67 +183,43 @@ section{
     <div class="logo">fiiselfi</div>
     <ul>
         <li><a href="#about">About</a></li>
-        <li><a href="#gallery">Gallery</a></li>
     </ul>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-    <div class="hero-container">
-        <div class="hero-text" data-aos="fade-right">
-            <small>My Personal Profile</small>
-            <h1>Selfi Anggreani</h1>
-            <h2 id="typing"></h2>
-            <p>
-               Halo! Aku orangnya ceria dan suka mencoba hal baru. 
-               Aku menikmati waktu bersama orang-orang terdekat dan suka hal-hal random yang bikin hidup makin seru
-            </p>
-
-            <a href="#about" class="btn">Scroll Down</a>
-
-            <div class="social">  
-                <a href="https://wa.me/6281249540088" target="_blank"><i class="fab fa-whatsapp"></i></a>  
-                <a href="https://tiktok.com/@selllfiiiiii" target="_blank"><i class="fab fa-tiktok"></i></a>  
-                <a href="https://instagram.com/anggrreaa" target="_blank"><i class="fab fa-instagram"></i></a>  
-            </div>  
-        </div>
-
-        <div class="hero-img" data-aos="zoom-in">
-            <img src="https://i.imgur.com/2i5bOP3.jpeg">
+    <div class="hero-img" data-aos="zoom-in">
+        <img src="https://i.imgur.com/2i5bOP3.jpeg">
+    </div>
+    <div class="hero-text" data-aos="fade-left">
+        <small>My Personal Profile</small>
+        <h1>Selfi Anggreani</h1>
+        <h2 id="typing"></h2>
+        <p>
+           Halo! Aku orangnya ceria dan suka mencoba hal baru. Aku menikmati waktu bersama orang-orang terdekat dan suka hal-hal random yang bikin hidup makin seru
+        </p>
+        <a href="#about" class="btn">Scroll Down</a>
+        <div class="social">
+            <a href="https://wa.me/6281249540088"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://tiktok.com/@selllfiiiiii"><i class="fab fa-tiktok"></i></a>
+            <a href="https://instagram.com/anggrreaa"><i class="fab fa-instagram"></i></a>
         </div>
     </div>
 </section>
 
 <!-- ABOUT -->
-<section id="about">
-    <div class="about-container">
-        <div class="about-img" data-aos="fade-up">
-            <img src="https://i.imgur.com/2i5bOP3.jpeg">
-        </div>
-
-        <div class="about-text" data-aos="fade-left">
-            <h2>About Me</h2>
-            <p>
-                Aku orangnya super random dan penuh cerita. Suka ngobrol panjang, 
-                berbagi cerita seru, dan kadang jadi pusat informasi dadakan. Hidup itu terlalu singkat 
-                untuk gak ketawa dan melakukan hal-hal spontan.
-            </p>
-
-            <div class="quote">
-                "Random itu bukan aneh, tapi cara unik menikmati hidup."
-            </div>
-        </div>
+<section id="about" class="about about-section">
+    <div class="about-img" data-aos="fade-right">
+        <img src="https://i.imgur.com/2i5bOP3.jpeg">
     </div>
-</section>
-
-<!-- GALLERY -->
-<section id="gallery" class="gallery">
-    <h2 data-aos="fade-down">My Gallery</h2>
-    <div class="gallery-grid">
-        <img src="https://i.imgur.com/2i5bOP3.jpeg" data-aos="flip-left">
-        <img src="https://i.imgur.com/2i5bOP3.jpeg" data-aos="flip-left" data-aos-delay="100">
-        <img src="https://i.imgur.com/2i5bOP3.jpeg" data-aos="flip-left" data-aos-delay="200">
-        <img src="https://i.imgur.com/2i5bOP3.jpeg" data-aos="flip-left" data-aos-delay="300">
+    <div class="about-text" data-aos="fade-left">
+        <h2>About Me</h2>
+        <p>
+            Aku orangnya super random dan penuh cerita. Suka ngobrol panjang, berbagi cerita seru, dan kadang jadi pusat informasi dadakan, Hidup itu terlalu singkat untuk gak ketawa dan melakukan hal-hal spontan.
+        </p>
+        <div class="quote">
+            "Random itu bukan aneh, tapi cara unik menikmati hidup."
+        </div>
     </div>
 </section>
 
