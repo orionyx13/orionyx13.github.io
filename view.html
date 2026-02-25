@@ -7,6 +7,7 @@
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.12.1/simple-lightbox.min.css" rel="stylesheet">
 
 <style>
 *{
@@ -22,13 +23,7 @@ html{
 }
 
 body{
-    background: linear-gradient(
-        180deg,
-        #f8b6d8 0%,
-        #f6a9c9 40%,
-        #fcd6e6 70%,
-        #ffeef5 100%
-    );
+    background: linear-gradient(180deg, #f8b6d8 0%, #f6a9c9 40%, #fcd6e6 70%, #ffeef5 100%);
 }
 
 /* NAVBAR */
@@ -101,7 +96,7 @@ section, .hero {
 
 .hero-text p{
     max-width:500px;
-    margin:20px 0 60px; /* kasih space bawah untuk scroll button */
+    margin:20px 0;
     line-height:1.7;
     color:#555;
 }
@@ -206,14 +201,58 @@ section, .hero {
     width: 100%;
 }
 
-.gallery-grid img{
+.gallery-grid a img{
     width:100%;
-    height: 300px;
-    object-fit: cover;
+    height:300px;
+    object-fit:cover;
     border-radius:25px;
     transition:0.3s;
     box-shadow:0 10px 30px rgba(0,0,0,0.1);
-    cursor:pointer;
+}
+
+/* MUSIC */
+.music-section{
+    height:auto;
+    padding:100px 8%;
+    text-align:center;
+    background:#fff0f5;
+}
+
+.music-section h2{
+    color:#d81b60;
+    font-size:40px;
+    margin-bottom:30px;
+}
+
+.music-section .player-container{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:20px;
+}
+
+.music-section audio{
+    width:100%;
+    max-width:500px;
+    outline:none;
+}
+
+/* ANIMASI KASET */
+.kaset{
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    border:5px solid #d81b60;
+    background:#ffe3ef;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    animation:spin 4s linear infinite;
+}
+
+@keyframes spin{
+    0%{transform:rotate(0deg);}
+    100%{transform:rotate(360deg);}
 }
 
 /* MOBILE */
@@ -223,41 +262,11 @@ section, .hero {
         text-align:center;
     }
     section, .hero{
-        height: auto;
-        padding: 100px 8%;
+        height:auto;
+        padding:100px 8%;
     }
     .hero-img img{ width:260px; }
-}
-
-/* MODAL GALLERY */
-#imgModal {
-    display:none;
-    position:fixed;
-    z-index:2000;
-    padding-top:60px;
-    left:0;
-    top:0;
-    width:100%;
-    height:100%;
-    overflow:auto;
-    background-color:rgba(0,0,0,0.9);
-}
-
-#imgModal img {
-    margin:auto;
-    display:block;
-    max-width:90%;
-    max-height:80%;
-}
-
-#imgModal span {
-    position:absolute;
-    top:20px;
-    right:35px;
-    color:#fff;
-    font-size:40px;
-    font-weight:bold;
-    cursor:pointer;
+    .kaset{width:70px;height:70px;}
 }
 </style>
 </head>
@@ -266,13 +275,14 @@ section, .hero {
 <nav>
     <div class="logo">fiiselfi</div>
     <ul>
-        <li><a href="#hero" onclick="scrollToHero(event)">Profil</a></li>
+        <li><a href="#hero">Profil</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#music">Music</a></li>
     </ul>
 </nav>
 
-<div class="hero" id="hero">
+<div id="hero" class="hero">
     <div class="hero-container">
         <div class="hero-text" data-aos="fade-right">
             <small>My Personal Profile</small>
@@ -322,26 +332,34 @@ section, .hero {
 <section id="gallery" class="gallery">
     <h2 data-aos="fade-down">My Gallery</h2>
     <div class="gallery-grid">
-        <img src="https://i.imgur.com/2i5bOP3.jpeg" data-aos="flip-left">
-        <img src="https://i.imgur.com/7gDBwf3.jpeg" data-aos="flip-left" data-aos-delay="100">
-        <img src="https://i.imgur.com/762XWTP.jpeg" data-aos="flip-left" data-aos-delay="200">
-        <img src="https://i.imgur.com/gd1zhkP.jpeg" data-aos="flip-left" data-aos-delay="300">
-        <img src="https://i.imgur.com/QtIVZIp.jpeg" data-aos="flip-left" data-aos-delay="400">
-        <img src="https://i.imgur.com/6pDyPK9.jpeg" data-aos="flip-left" data-aos-delay="500">
-        <img src="https://i.imgur.com/vwYTfMP.jpeg" data-aos="flip-left" data-aos-delay="600">
+        <a href="https://i.imgur.com/2i5bOP3.jpeg"><img src="https://i.imgur.com/2i5bOP3.jpeg" data-aos="flip-left"></a>
+        <a href="https://i.imgur.com/7gDBwf3.jpeg"><img src="https://i.imgur.com/7gDBwf3.jpeg" data-aos="flip-left" data-aos-delay="100"></a>
+        <a href="https://i.imgur.com/762XWTP.jpeg"><img src="https://i.imgur.com/762XWTP.jpeg" data-aos="flip-left" data-aos-delay="200"></a>
+        <a href="https://i.imgur.com/gd1zhkP.jpeg"><img src="https://i.imgur.com/gd1zhkP.jpeg" data-aos="flip-left" data-aos-delay="300"></a>
+        <a href="https://i.imgur.com/6pDyPK9.jpeg"><img src="https://i.imgur.com/6pDyPK9.jpeg" data-aos="flip-left" data-aos-delay="500"></a>
+        <a href="https://i.imgur.com/vwYTfMP.jpeg"><img src="https://i.imgur.com/vwYTfMP.jpeg" data-aos="flip-left" data-aos-delay="600"></a>
     </div>
 </section>
 
-<!-- Modal Gallery -->
-<div id="imgModal">
-    <span onclick="closeModal()">&times;</span>
-    <img id="modalImg" src="">
-</div>
+<section id="music" class="music-section">
+    <h2 data-aos="fade-down">My Music</h2>
+    <div class="player-container">
+        <div class="kaset" data-aos="zoom-in">
+            <i class="fas fa-compact-disc fa-2x"></i>
+        </div>
+        <audio controls>
+            <source src="https://media1.vocaroo.com/mp3/1iOHmYkp7tIu" type="audio/mpeg">
+            Browsermu tidak mendukung audio.
+        </audio>
+    </div>
+</section>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.12.1/simple-lightbox.min.js"></script>
 <script>
 AOS.init({ duration: 1000 });
 
+// Typing Effect
 const text = "Penggosip • Random • Gak Jelas";
 let i = 0;
 function typing(){
@@ -353,25 +371,8 @@ function typing(){
 }
 typing();
 
-/* Scroll Profil ke Hero */
-function scrollToHero(e){
-    e.preventDefault();
-    document.getElementById("hero").scrollIntoView({behavior:"smooth"});
-}
-
-/* Gallery Modal */
-const modal = document.getElementById("imgModal");
-const modalImg = document.getElementById("modalImg");
-document.querySelectorAll(".gallery-grid img").forEach(img => {
-    img.onclick = () => {
-        modal.style.display = "block";
-        modalImg.src = img.src;
-    }
-});
-
-function closeModal(){
-    modal.style.display = "none";
-}
+// Lightbox Gallery
+var lightbox = new SimpleLightbox('.gallery-grid a', { captions: false });
 </script>
 
 </body>
