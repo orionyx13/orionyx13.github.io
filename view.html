@@ -21,7 +21,7 @@ nav ul{list-style:none;display:flex;gap:25px;}
 nav ul li a{text-decoration:none;font-weight:500;color:#555;transition:0.3s;}
 nav ul li a:hover{color:#d81b60;}
 
-/* SECTION */
+/* SECTION SETUP */
 section,.hero{height:100vh;scroll-snap-align:start;display:flex;align-items:center;justify-content:center;padding:0 8%;}
 
 /* HERO */
@@ -55,11 +55,11 @@ section,.hero{height:100vh;scroll-snap-align:start;display:flex;align-items:cent
 .music-section{height:auto;padding:100px 8%;text-align:center;background:#fff0f5;}
 .music-section h2{color:#d81b60;font-size:40px;margin-bottom:30px;}
 .player-container{display:flex;flex-direction:column;align-items:center;gap:20px;}
-.music-section audio{width:100%;max-width:500px;outline:none;cursor:pointer;}
+.music-section audio{width:100%;max-width:500px;outline:none;}
 
-/* KASET ANIMASI */
-.kaset{width:100px;height:100px;border-radius:50%;border:5px solid #d81b60;background:#ffe3ef;display:flex;align-items:center;justify-content:center;animation:spin 4s linear infinite;}
-.kaset.paused{animation-play-state:paused;}
+/* ANIMASI KASET */
+.kaset{width:100px;height:100px;border-radius:50%;border:5px solid #d81b60;background:#ffe3ef;display:flex;align-items:center;justify-content:center;animation:spin 4s linear infinite;animation-play-state:paused;}
+.kaset.playing{animation-play-state:running;}
 @keyframes spin{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
 
 /* MOBILE */
@@ -86,11 +86,11 @@ section,.hero{height:100vh;scroll-snap-align:start;display:flex;align-items:cent
             <h2 id="typing"></h2>
             <p>Halo! Aku orangnya ceria dan suka mencoba hal baru. Aku menikmati waktu bersama orang-orang terdekat dan suka hal-hal random yang bikin hidup makin seru</p>
             <a href="#about" class="btn">Scroll Down</a>
-            <div class="social">
-                <a href="https://wa.me/6281249540088" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                <a href="https://tiktok.com/@selllfiiiiii" target="_blank"><i class="fab fa-tiktok"></i></a>
-                <a href="https://instagram.com/anggrreaa" target="_blank"><i class="fab fa-instagram"></i></a>
-            </div>
+            <div class="social">  
+                <a href="https://wa.me/6281249540088" target="_blank"><i class="fab fa-whatsapp"></i></a>  
+                <a href="https://tiktok.com/@selllfiiiiii" target="_blank"><i class="fab fa-tiktok"></i></a>  
+                <a href="https://instagram.com/anggrreaa" target="_blank"><i class="fab fa-instagram"></i></a>  
+            </div>  
         </div>
         <div class="hero-img" data-aos="zoom-in">
             <img src="https://i.imgur.com/2i5bOP3.jpeg">
@@ -128,7 +128,7 @@ section,.hero{height:100vh;scroll-snap-align:start;display:flex;align-items:cent
     <div class="player-container">
         <div class="kaset" data-aos="zoom-in"><i class="fas fa-compact-disc fa-2x"></i></div>
         <audio id="audioPlayer" controls>
-            <source src="https://voca.ro/1iOHmYkp7tIu" type="audio/mpeg">
+            <source src="https://docs.google.com/uc?export=download&id=1OQBqqfACYQLrQM1nrzKbCvWwfw2qQOd3" type="audio/mpeg">
             Browsermu tidak mendukung audio.
         </audio>
     </div>
@@ -139,7 +139,6 @@ section,.hero{height:100vh;scroll-snap-align:start;display:flex;align-items:cent
 <script>
 AOS.init({ duration: 1000 });
 
-// Typing Effect
 const text = "Penggosip • Random • Gak Jelas";
 let i = 0;
 function typing(){
@@ -151,16 +150,15 @@ function typing(){
 }
 typing();
 
-// Lightbox Gallery
 var lightbox = new SimpleLightbox('.gallery-grid a', { captions: false });
 
-// Kaset spin saat audio play/pause
 const audio = document.getElementById('audioPlayer');
 const kaset = document.querySelector('.kaset');
 
-audio.addEventListener('play', () => { kaset.classList.remove('paused'); });
-audio.addEventListener('pause', () => { kaset.classList.add('paused'); });
-audio.addEventListener('ended', () => { kaset.classList.add('paused'); });
+// Logika putar kaset yang lebih stabil
+audio.addEventListener('play', () => { kaset.classList.add('playing'); });
+audio.addEventListener('pause', () => { kaset.classList.remove('playing'); });
+audio.addEventListener('ended', () => { kaset.classList.remove('playing'); });
 </script>
 
 </body>
