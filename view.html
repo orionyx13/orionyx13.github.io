@@ -10,7 +10,7 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.12.1/simple-lightbox.min.css" rel="stylesheet">
 
 <style>
-/* --- HIASAN BACKGROUND --- */
+/* --- HIASAN BACKGROUND & BASE --- */
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 html{scroll-behavior:smooth;}
 body{
@@ -19,150 +19,136 @@ body{
     position: relative;
 }
 
-/* Dekorasi Lingkaran Melayang */
-body::before, body::after {
-    content: "";
-    position: fixed;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    background: rgba(216, 27, 96, 0.05);
-    z-index: -1;
-    animation: move 20s infinite linear;
+/* Dekorasi Elemen Melayang (Bintang & Bulat) */
+.decor {
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.6;
+    animation: floating 6s ease-in-out infinite;
 }
-body::before { top: -100px; left: -100px; }
-body::after { bottom: -100px; right: -100px; background: rgba(255, 255, 255, 0.2); }
 
-@keyframes move {
-    0% { transform: translate(0, 0) rotate(0deg); }
-    50% { transform: translate(100px, 50px) rotate(180deg); }
-    100% { transform: translate(0, 0) rotate(360deg); }
+@keyframes floating {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(10deg); }
 }
 
 /* NAVBAR */
-nav{display:flex;justify-content:space-between;align-items:center;padding:18px 8%;background:rgba(255,255,255,0.85);backdrop-filter:blur(10px);position:fixed;width:100%;top:0;z-index:1000;}
-.logo{font-size:22px;font-weight:bold;color:#d81b60;}
+nav{display:flex;justify-content:space-between;align-items:center;padding:18px 8%;background:rgba(255,255,255,0.7);backdrop-filter:blur(15px);position:fixed;width:100%;top:0;z-index:1000;border-bottom: 1px solid rgba(255,255,255,0.3);}
+.logo{font-size:22px;font-weight:bold;color:#d81b60;text-transform: lowercase;}
 nav ul{list-style:none;display:flex;gap:25px;}
-nav ul li a{text-decoration:none;font-weight:500;color:#555;transition:0.3s;}
-nav ul li a:hover{color:#d81b60;}
+nav ul li a{text-decoration:none;font-weight:600;color:#d81b60;transition:0.3s;font-size: 0.9rem;}
+nav ul li a:hover{opacity: 0.7; letter-spacing: 1px;}
 
 /* SECTION SETUP */
-section,.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:100px 8%; position: relative;}
+section,.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:100px 8%; position: relative; z-index: 1;}
 
 /* HERO */
 .hero-container{display:flex;align-items:center;justify-content:space-between;gap:50px;width:100%;}
-.hero-text h1{font-size:50px;color:#d81b60;margin:10px 0;}
-.hero-text h2{font-size:20px;color:#444;height:30px;}
-.hero-text p{max-width:500px;margin:20px 0;line-height:1.7;color:#555;}
-.btn{background:#d81b60;color:white;padding:12px 30px;border:none;border-radius:30px;cursor:pointer;transition:0.3s;text-decoration:none;display:inline-block;}
-.btn:hover{transform:translateY(-3px); box-shadow: 0 10px 20px rgba(216, 27, 96, 0.2);}
-.social{margin-top:20px;}
-.social a{margin-right:15px;font-size:24px;color:#d81b60;transition:0.3s; display: inline-block;}
-.social a:hover{transform:scale(1.2);color:#ad1457;}
+.hero-text small { color: #ad1457; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; font-size: 0.7rem; }
+.hero-text h1{font-size:55px;color:#d81b60;margin:5px 0; font-weight: 800; line-height: 1.1;}
+.hero-text h2{font-size:20px;color:#ad1457;height:30px; font-weight: 500;}
+.hero-text p{max-width:450px;margin:20px 0;line-height:1.7;color:#6d4c41; font-size: 0.95rem;}
+
+.btn{background:#d81b60;color:white;padding:14px 35px;border:none;border-radius:50px;cursor:pointer;transition:0.4s;text-decoration:none;display:inline-block;font-weight: 600;box-shadow: 0 10px 20px rgba(216, 27, 96, 0.2);}
+.btn:hover{transform: scale(1.05); background: #ad1457; box-shadow: 0 15px 25px rgba(216, 27, 96, 0.4);}
+
+.social{margin-top:25px;}
+.social a{margin-right:15px;font-size:22px;color:#d81b60;transition:0.3s; display: inline-block; background: white; width: 45px; height: 45px; line-height: 45px; text-align: center; border-radius: 50%; box-shadow: 0 5px 15px rgba(0,0,0,0.05);}
+.social a:hover{transform:translateY(-5px); background: #d81b60; color: white;}
 
 /* Efek Foto Profil */
-.hero-img img{
-    width:360px; 
-    border-radius:120px 40px 120px 40px; 
-    box-shadow:0 15px 40px rgba(216,27,96,0.3); 
-    animation:float 4s ease-in-out infinite;
-    border: 5px solid white;
+.hero-img { position: relative; }
+.hero-img::before {
+    content: "⭐"; position: absolute; top: -20px; right: -10px; font-size: 2rem; animation: floating 3s infinite;
 }
-@keyframes float{0%{transform:translateY(0);}50%{transform:translateY(-12px);}100%{transform:translateY(0);}}
+.hero-img img{
+    width:340px; 
+    border-radius: 60% 40% 70% 30% / 40% 50% 60% 70%;
+    box-shadow:0 20px 50px rgba(216,27,96,0.3); 
+    animation: morphing 8s ease-in-out infinite;
+    border: 8px solid white;
+}
+@keyframes morphing {
+    0% { border-radius: 60% 40% 70% 30% / 40% 50% 60% 70%; }
+    50% { border-radius: 30% 60% 30% 70% / 50% 40% 70% 40%; }
+    100% { border-radius: 60% 40% 70% 30% / 40% 50% 60% 70%; }
+}
 
 /* ABOUT */
-.about-section{background:rgba(255,255,255,0.6);backdrop-filter:blur(15px);}
+.about-section{background:rgba(255,255,255,0.4);backdrop-filter:blur(10px); position: relative;}
 .about-container{display:flex;align-items:center;gap:60px;width:100%;}
-.about-img img{width:320px; border-radius:120px 40px 120px 40px; border: 5px solid white; box-shadow: 0 10px 30px rgba(0,0,0,0.1);}
-.about-text h2{font-size:38px;color:#d81b60; border-bottom: 3px solid #d81b60; display: inline-block; margin-bottom: 15px;}
-.about-text p{margin:20px 0;line-height:1.7;}
-.quote{background:#ffe3ef;padding:20px;border-left:5px solid #d81b60;border-radius:15px;font-style:italic; box-shadow: 5px 5px 15px rgba(0,0,0,0.05);}
+.about-img img{width:320px; border-radius:30px; border: 8px solid white; box-shadow: 0 15px 35px rgba(0,0,0,0.1); transform: rotate(-3deg);}
+.about-text h2{font-size:38px;color:#d81b60; font-weight: 800; margin-bottom: 10px;}
+.about-text p{margin-bottom: 20px; color: #555;}
+.quote{background:rgba(255, 255, 255, 0.8);padding:25px;border-left:8px solid #d81b60;border-radius:0 20px 20px 0;font-style:italic; font-weight: 500; color: #ad1457; box-shadow: 10px 10px 30px rgba(0,0,0,0.05);}
 
 /* GALLERY */
-.gallery{flex-direction:column;}
-.gallery h2{font-size:40px;color:#d81b60;margin-bottom:50px;align-self: flex-start; border-left: 8px solid #d81b60; padding-left: 15px;}
-.gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;width:100%;}
-.gallery-grid a img{width:100%;height:300px;object-fit:cover;border-radius:25px;transition:0.5s;box-shadow:0 10px 30px rgba(0,0,0,0.1);}
-.gallery-grid a:hover img { transform: scale(1.05); }
+.gallery{flex-direction:column; background: #fff;}
+.gallery h2{font-size:35px;color:#d81b60;margin-bottom:40px; font-weight: 800; text-align: center; width: 100%;}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;width:100%;}
+.gallery-grid a { overflow: hidden; border-radius: 20px; height: 300px; }
+.gallery-grid a img{width:100%;height:100%;object-fit:cover; transition: 0.6s;}
+.gallery-grid a:hover img { transform: scale(1.1) rotate(2deg); filter: brightness(0.8); }
 
-/* MUSIC SECTION (TETAP HORIZONTAL SCROLL) */
-.music-section{
-    background:#fff0f5;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    min-height: auto;
-    padding: 80px 8%;
-}
-.music-header {
-    color: #d81b60;
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 25px;
-    border-bottom: 3px solid #d81b60;
-    padding-bottom: 5px;
-}
-.music-grid {
-    display: flex;
-    overflow-x: auto;
-    gap: 20px;
-    width: 100%;
-    padding-bottom: 25px;
-    scroll-behavior: smooth;
-}
-.music-grid::-webkit-scrollbar { height: 6px; }
-.music-grid::-webkit-scrollbar-thumb { background: #d81b6055; border-radius: 10px; }
+/* MUSIC SECTION */
+.music-section{ background:#ffeef5; padding: 80px 8%; flex-direction: column; }
+.music-header { color: #d81b60; font-size: 1.8rem; font-weight: 800; margin-bottom: 30px; text-align: center; width: 100%; }
+.music-grid { display: flex; overflow-x: auto; gap: 20px; padding: 20px 5px 40px; scrollbar-width: none; }
+.music-grid::-webkit-scrollbar { display: none; }
 
 .music-card {
     background: white;
-    padding: 12px;
-    border-radius: 20px;
-    box-shadow: 0 8px 25px rgba(216, 27, 96, 0.1);
-    min-width: 190px;
-    transition: 0.3s;
+    padding: 15px;
+    border-radius: 25px;
+    min-width: 220px;
+    transition: 0.4s;
+    border: 1px solid rgba(216, 27, 96, 0.1);
+    text-align: center;
 }
-.album-art { width: 100%; aspect-ratio: 1/1; border-radius: 15px; overflow: hidden; margin-bottom: 10px; }
+.music-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(216, 27, 96, 0.15); }
+.album-art { width: 100%; aspect-ratio: 1/1; border-radius: 18px; overflow: hidden; margin-bottom: 15px; }
 .album-art img { width: 100%; height: 100%; object-fit: cover; }
-.music-info h3 { color: #d81b60; font-size: 0.85rem; margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.music-info p { color: #777; font-size: 0.7rem; }
+.music-info h3 { color: #d81b60; font-size: 1rem; margin-bottom: 5px; }
+.music-info p { color: #888; font-size: 0.8rem; margin-bottom: 15px; }
 
-.controls { display: flex; justify-content: center; align-items: center; gap: 10px; }
-.ctrl-btn { background: none; border: none; color: #d81b60; font-size: 0.8rem; cursor: pointer; }
-.play-btn {
-    background: #d81b60;
-    color: white !important;
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.controls { display: flex; justify-content: center; align-items: center; gap: 15px; }
+.ctrl-btn { background: #fce4ec; border: none; color: #d81b60; width: 35px; height: 35px; border-radius: 50%; cursor: pointer; transition: 0.3s; }
+.play-btn { background: #d81b60 !important; color: white !important; width: 45px !important; height: 45px !important; font-size: 1.1rem; }
+.ctrl-btn:hover { transform: scale(1.1); background: #f8bbd0; }
+
+@media(max-width:900px){
+    .hero-container,.about-container{flex-direction:column;text-align:center;}
+    .hero-text h1{font-size: 40px;}
+    .about-img img { width: 100%; max-width: 300px; }
 }
-audio { display: none; }
-
-@media(max-width:900px){.hero-container,.about-container{flex-direction:column;text-align:center;}section,.hero{height:auto;padding:80px 8%;}.hero-img img{width:260px;}}
 </style>
 </head>
 <body>
 
+<div class="decor" style="top: 15%; left: 5%; font-size: 30px;">🌸</div>
+<div class="decor" style="top: 40%; right: 10%; font-size: 40px; animation-delay: 2s;">✨</div>
+<div class="decor" style="bottom: 20%; left: 10%; font-size: 25px; animation-delay: 1s;">💖</div>
+<div class="decor" style="top: 70%; right: 5%; font-size: 35px; animation-delay: 3s;">☁️</div>
+
 <nav>
-    <div class="logo">fiiselfi</div>
+    <div class="logo">fiiselfi.</div>
     <ul>
-        <li><a href="#hero">Profil</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#music">Music</a></li>
+        <li><a href="#hero">HOME</a></li>
+        <li><a href="#about">ABOUT</a></li>
+        <li><a href="#gallery">GALLERY</a></li>
+        <li><a href="#music">MUSIC</a></li>
     </ul>
 </nav>
 
 <div id="hero" class="hero">
     <div class="hero-container">
         <div class="hero-text" data-aos="fade-right">
-            <small>My Personal Profile</small>
-            <h1>Selfi Anggreani</h1>
+            <small>Personal Website</small>
+            <h1>Selfi <br> Anggreani</h1>
             <h2 id="typing"></h2>
-            <p>Halo! Aku orangnya ceria dan suka mencoba hal baru. Aku menikmati waktu bersama orang-orang terdekat dan suka hal-hal random yang bikin hidup makin seru</p>
-            <a href="#about" class="btn">Scroll Down</a>
+            <p>Halo! Aku orangnya ceria dan suka mencoba hal baru. Aku menikmati waktu bersama orang-orang terdekat dan suka hal-hal random yang bikin hidup makin seru!</p>
+            <a href="#about" class="btn">Kenalan Yuk!</a>
             <div class="social">  
                 <a href="https://wa.me/6281249540088" target="_blank"><i class="fab fa-whatsapp"></i></a>  
                 <a href="https://tiktok.com/@selllfiiiiii" target="_blank"><i class="fab fa-tiktok"></i></a>  
@@ -177,34 +163,34 @@ audio { display: none; }
 
 <section id="about" class="about-section">
     <div class="about-container">
-        <div class="about-img" data-aos="fade-up">
+        <div class="about-img" data-aos="fade-right">
             <img src="https://i.imgur.com/7gDBwf3.jpeg">
         </div>
         <div class="about-text" data-aos="fade-left">
             <h2>About Me</h2>
-            <p>Aku orangnya super random dan penuh cerita. Suka ngobrol panjang, berbagi cerita seru, dan kadang jadi pusat informasi dadakan, Hidup itu terlalu singkat untuk gak ketawa dan melakukan hal-hal spontan.</p>
-            <div class="quote">"Random itu bukan aneh, tapi cara unik menikmati hidup."</div>
+            <p>Aku orangnya super random dan penuh cerita. Suka ngobrol panjang, berbagi cerita seru, dan kadang jadi pusat informasi dadakan. Bagiku, hidup itu terlalu singkat untuk gak ketawa dan melakukan hal-hal spontan yang seru.</p>
+            <div class="quote">"Random itu bukan aneh, tapi cara unik untuk menikmati hidup."</div>
         </div>
     </div>
 </section>
 
 <section id="gallery" class="gallery">
-    <h2 data-aos="fade-down">My Gallery</h2>
+    <h2 data-aos="fade-up">My Moments</h2>
     <div class="gallery-grid">
-        <a href="https://i.imgur.com/2i5bOP3.jpeg"><img src="https://i.imgur.com/2i5bOP3.jpeg" data-aos="flip-left"></a>
-        <a href="https://i.imgur.com/7gDBwf3.jpeg"><img src="https://i.imgur.com/7gDBwf3.jpeg" data-aos="flip-left" data-aos-delay="100"></a>
-        <a href="https://i.imgur.com/762XWTP.jpeg"><img src="https://i.imgur.com/762XWTP.jpeg" data-aos="flip-left" data-aos-delay="200"></a>
-        <a href="https://i.imgur.com/gd1zhkP.jpeg"><img src="https://i.imgur.com/gd1zhkP.jpeg" data-aos="flip-left" data-aos-delay="300"></a>
-        <a href="https://i.imgur.com/6pDyPK9.jpeg"><img src="https://i.imgur.com/6pDyPK9.jpeg" data-aos="flip-left" data-aos-delay="500"></a>
-        <a href="https://i.imgur.com/vwYTfMP.jpeg"><img src="https://i.imgur.com/vwYTfMP.jpeg" data-aos="flip-left" data-aos-delay="600"></a>
+        <a href="https://i.imgur.com/2i5bOP3.jpeg"><img src="https://i.imgur.com/2i5bOP3.jpeg" data-aos="zoom-in"></a>
+        <a href="https://i.imgur.com/7gDBwf3.jpeg"><img src="https://i.imgur.com/7gDBwf3.jpeg" data-aos="zoom-in" data-aos-delay="100"></a>
+        <a href="https://i.imgur.com/762XWTP.jpeg"><img src="https://i.imgur.com/762XWTP.jpeg" data-aos="zoom-in" data-aos-delay="200"></a>
+        <a href="https://i.imgur.com/gd1zhkP.jpeg"><img src="https://i.imgur.com/gd1zhkP.jpeg" data-aos="zoom-in" data-aos-delay="300"></a>
+        <a href="https://i.imgur.com/6pDyPK9.jpeg"><img src="https://i.imgur.com/6pDyPK9.jpeg" data-aos="zoom-in" data-aos-delay="400"></a>
+        <a href="https://i.imgur.com/vwYTfMP.jpeg"><img src="https://i.imgur.com/vwYTfMP.jpeg" data-aos="zoom-in" data-aos-delay="500"></a>
     </div>
 </section>
 
 <section id="music" class="music-section">
-    <div class="music-header" data-aos="fade-right">Playing Music</div>
+    <div class="music-header" data-aos="fade-up">My Favorite Playlist 🎵</div>
     
     <div class="music-grid">
-        <div class="music-card" data-aos="zoom-in">
+        <div class="music-card" data-aos="fade-up">
             <div class="album-art"><img src="https://i.imgur.com/tmgEm81.jpeg"></div>
             <div class="music-info"><h3>Blue</h3><p>Yung Kai</p></div>
             <div class="controls">
@@ -215,7 +201,7 @@ audio { display: none; }
             <audio><source src="https://github.com/orionyx13/asetsmsc.github.io/raw/refs/heads/main/yung%20kai%20blue%20Lyrics.mp3"></audio>
         </div>
 
-        <div class="music-card" data-aos="zoom-in" data-aos-delay="100">
+        <div class="music-card" data-aos="fade-up" data-aos-delay="100">
             <div class="album-art"><img src="https://i.imgur.com/vol4Nin.jpeg"></div>
             <div class="music-info"><h3>Lihat Kebunku</h3><p>Jeje</p></div>
             <div class="controls">
@@ -226,7 +212,7 @@ audio { display: none; }
             <audio><source src="https://github.com/orionyx13/asetsmsc.github.io/raw/refs/heads/main/Aku%20Jeje%20Lihat%20Kebunku%20Taman%20Bunga%20lyricvideo.mp3"></audio>
         </div>
 
-        <div class="music-card" data-aos="zoom-in" data-aos-delay="200">
+        <div class="music-card" data-aos="fade-up" data-aos-delay="200">
             <div class="album-art"><img src="https://i.imgur.com/Tw9bKcG.jpeg"></div>
             <div class="music-info"><h3>Nina</h3><p>.Feast</p></div>
             <div class="controls">
@@ -236,68 +222,14 @@ audio { display: none; }
             </div>
             <audio><source src="https://github.com/orionyx13/asetsmsc.github.io/raw/refs/heads/main/Feast%20Nina%20Official%20Lyric%20Video.mp3"></audio>
         </div>
-
-        <div class="music-card" data-aos="zoom-in" data-aos-delay="300">
-            <div class="album-art"><img src="https://i.imgur.com/B8iv2rp.jpeg"></div>
-            <div class="music-info"><h3>Sedia Sebelum Hujan</h3><p>Idgitaf</p></div>
-            <div class="controls">
-                <button class="ctrl-btn" onclick="replay(this)"><i class="fas fa-redo-alt"></i></button>
-                <button class="ctrl-btn play-btn" onclick="togglePlay(this)"><i class="fas fa-play"></i></button>
-                <button class="ctrl-btn" onclick="skip10(this)"><i class="fas fa-forward"></i></button>
-            </div>
-            <audio><source src="https://github.com/orionyx13/asetsmsc.github.io/raw/refs/heads/main/Idgitaf%20Sedia%20Aku%20Sebelum%20Hujan%20Official%20Lyric%20Video.mp3"></audio>
+        
         </div>
-
-        <div class="music-card" data-aos="zoom-in" data-aos-delay="400">
-            <div class="album-art"><img src="https://i.imgur.com/cqGmLOM.jpeg"></div>
-            <div class="music-info"><h3>Kota Ini Tak Sama</h3><p>Nadhif Basalamah</p></div>
-            <div class="controls">
-                <button class="ctrl-btn" onclick="replay(this)"><i class="fas fa-redo-alt"></i></button>
-                <button class="ctrl-btn play-btn" onclick="togglePlay(this)"><i class="fas fa-play"></i></button>
-                <button class="ctrl-btn" onclick="skip10(this)"><i class="fas fa-forward"></i></button>
-            </div>
-            <audio><source src="https://github.com/orionyx13/asetsmsc.github.io/raw/refs/heads/main/Nadhif%20Basalamah%20kota%20ini%20tak%20sama%20tanpamu%20Official%20Lyric%20Video.mp3"></audio>
-        </div>
-
-        <div class="music-card" data-aos="zoom-in" data-aos-delay="500">
-            <div class="album-art"><img src="https://i.imgur.com/S98QBea.jpeg"></div>
-            <div class="music-info"><h3>Lesung Pipi</h3><p>Raim Laode</p></div>
-            <div class="controls">
-                <button class="ctrl-btn" onclick="replay(this)"><i class="fas fa-redo-alt"></i></button>
-                <button class="ctrl-btn play-btn" onclick="togglePlay(this)"><i class="fas fa-play"></i></button>
-                <button class="ctrl-btn" onclick="skip10(this)"><i class="fas fa-forward"></i></button>
-            </div>
-            <audio><source src="https://github.com/orionyx13/asetsmsc.github.io/raw/refs/heads/main/Raim%20Laode%20Lesung%20Pipi%20video%20lirik%20official.mp3"></audio>
-        </div>
-
-        <div class="music-card" data-aos="zoom-in" data-aos-delay="600">
-            <div class="album-art"><img src="https://i.imgur.com/Rm348bL.jpeg"></div>
-            <div class="music-info"><h3>Bunga Maaf</h3><p>The Lantis</p></div>
-            <div class="controls">
-                <button class="ctrl-btn" onclick="replay(this)"><i class="fas fa-redo-alt"></i></button>
-                <button class="ctrl-btn play-btn" onclick="togglePlay(this)"><i class="fas fa-play"></i></button>
-                <button class="ctrl-btn" onclick="skip10(this)"><i class="fas fa-forward"></i></button>
-            </div>
-            <audio><source src="https://github.com/orionyx13/asetsmsc.github.io/raw/refs/heads/main/The%20Lantis%20Bunga%20Maaf%20Visualizer.mp3"></audio>
-        </div>
-
-        <div class="music-card" data-aos="zoom-in" data-aos-delay="700">
-            <div class="album-art"><img src="https://i.imgur.com/qRZbbLM.jpeg"></div>
-            <div class="music-info"><h3>Bunga Sakuraku</h3><p>JKT48</p></div>
-            <div class="controls">
-                <button class="ctrl-btn" onclick="replay(this)"><i class="fas fa-redo-alt"></i></button>
-                <button class="ctrl-btn play-btn" onclick="togglePlay(this)"><i class="fas fa-play"></i></button>
-                <button class="ctrl-btn" onclick="skip10(this)"><i class="fas fa-forward"></i></button>
-            </div>
-            <audio><source src="https://github.com/orionyx13/asetsmsc.github.io/raw/refs/heads/main/JKT48%20Boku%20No%20Sakura%20Bunga%20Sakuraku%20Color%20Coded%20Lyrics.mp3"></audio>
-        </div>
-    </div>
 </section>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.12.1/simple-lightbox.min.js"></script>
 <script>
-AOS.init({ duration: 1000 });
+AOS.init({ duration: 1000, once: true });
 
 function togglePlay(btn) {
     const card = btn.closest('.music-card');
@@ -336,10 +268,10 @@ function typing(){
     if(i < text.length){
         document.getElementById("typing").innerHTML += text.charAt(i);
         i++;
-        setTimeout(typing, 70);
+        setTimeout(typing, 100);
     }
 }
-typing();
+window.onload = typing;
 
 var lightbox = new SimpleLightbox('.gallery-grid a', { captions: false });
 </script>
