@@ -105,6 +105,31 @@ section,.hero{min-height:100vh;display:flex;align-items:center;justify-content:c
 .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;width:100%;}
 .gallery-grid a img{width:100%;height:300px;object-fit:cover;border-radius:25px;transition:0.5s;box-shadow:0 10px 30px rgba(0,0,0,0.1);}
 .gallery-grid a:hover img { transform: scale(1.05); }
+.gallery-grid{
+    grid-template-columns:repeat(3, 1fr);
+}
+
+.gallery-pagination{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:20px;
+    margin-top:30px;
+}
+
+.gallery-pagination button{
+    background:#ff4f8b;
+    color:white;
+    border:none;
+    padding:8px 16px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:18px;
+}
+
+.gallery-pagination span{
+    font-weight:bold;
+}
 
 /* MUSIC SECTION */
 .music-section{
@@ -228,6 +253,12 @@ audio { display: none; }
         <a href="https://i.imgur.com/vwYTfMP.jpeg"><img src="https://i.imgur.com/vwYTfMP.jpeg" data-aos="flip-left" data-aos-delay="600"></a>
         <a href="https://i.imgur.com/Xhe4WWs.jpeg"><img src="https://i.imgur.com/Xhe4WWs.jpeg" data-aos="flip-left" data-aos-delay="700"></a>
     </div>
+        </div>
+<div class="gallery-pagination">
+    <button id="prevPage">&lt;</button>
+    <span id="pageIndicator">1/1</span>
+    <button id="nextPage">&gt;</button>
+</div>
 </section>
 
 <section id="music" class="music-section">
@@ -473,6 +504,47 @@ typing();
 
 var lightbox = new SimpleLightbox('.gallery-grid a', { captions: false });
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function(){
 
+    const items = document.querySelectorAll(".gallery-grid a");
+    const itemsPerPage = 12;
+    let currentPage = 1;
+    const totalPages = Math.ceil(items.length / itemsPerPage);
+
+    const indicator = document.getElementById("pageIndicator");
+    const prevBtn = document.getElementById("prevPage");
+    const nextBtn = document.getElementById("nextPage");
+
+    function showPage(page){
+        items.forEach((item, index)=>{
+            item.style.display = "none";
+
+            if(index >= (page-1)*itemsPerPage && index < page*itemsPerPage){
+                item.style.display = "block";
+            }
+        });
+
+        indicator.textContent = page + "/" + totalPages;
+    }
+
+    prevBtn.addEventListener("click", ()=>{
+        if(currentPage > 1){
+            currentPage--;
+            showPage(currentPage);
+        }
+    });
+
+    nextBtn.addEventListener("click", ()=>{
+        if(currentPage < totalPages){
+            currentPage++;
+            showPage(currentPage);
+        }
+    });
+
+    showPage(currentPage);
+
+});
+</script>
 </body>
 </html>
