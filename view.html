@@ -423,4 +423,56 @@ audio { display: none; }
         
     </div>
     </section>
-    
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.12.1/simple-lightbox.min.js"></script>
+<script>
+AOS.init({ duration: 1000 });
+
+function togglePlay(btn) {
+    const card = btn.closest('.music-card');
+    const audio = card.querySelector('audio');
+    const icon = btn.querySelector('i');
+
+    if (audio.paused) {
+        document.querySelectorAll('audio').forEach(a => {
+            a.pause();
+            const otherBtnIcon = a.closest('.music-card').querySelector('.play-btn i');
+            otherBtnIcon.className = 'fas fa-play';
+        });
+        audio.play();
+        icon.className = 'fas fa-pause';
+    } else {
+        audio.pause();
+        icon.className = 'fas fa-play';
+    }
+}
+
+function replay(btn) {
+    const audio = btn.closest('.music-card').querySelector('audio');
+    audio.currentTime = 0;
+    audio.play();
+    btn.closest('.music-card').querySelector('.play-btn i').className = 'fas fa-pause';
+}
+
+function skip10(btn) {
+    const audio = btn.closest('.music-card').querySelector('audio');
+    audio.currentTime += 10;
+}
+
+const text = "Penggosip • Random • Gak Jelas";
+let i = 0;
+function typing(){
+    if(i < text.length){
+        document.getElementById("typing").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typing, 70);
+    }
+}
+typing();
+
+var lightbox = new SimpleLightbox('.gallery-grid a', { captions: false });
+</script>
+
+</body>
+</html>
