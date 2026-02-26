@@ -10,7 +10,7 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.12.1/simple-lightbox.min.css" rel="stylesheet">
 
 <style>
-/* --- HIASAN BACKGROUND --- */
+/* --- SETUP DASAR (TIDAK BERUBAH) --- */
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 html{scroll-behavior:smooth;}
 body{
@@ -19,40 +19,15 @@ body{
     position: relative;
 }
 
-/* --- HIASAN DAUN-DAUN (LEAVES DECORATION) --- */
-.leaf-decor {
+/* --- CANVAS UNTUK EFEK SAKURA --- */
+#sakura-canvas {
     position: fixed;
-    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Di belakang konten */
     pointer-events: none;
-    user-select: none;
-    opacity: 0.6;
-    filter: drop-shadow(2px 2px 5px rgba(0,0,0,0.05));
-    animation: leafFloat 15s infinite ease-in-out;
-}
-
-@keyframes leafFloat {
-    0%, 100% { transform: translateY(0) rotate(0deg) translateX(0); }
-    50% { transform: translateY(-40px) rotate(20deg) translateX(20px); }
-}
-
-/* Dekorasi Lingkaran Melayang */
-body::before, body::after {
-    content: "";
-    position: fixed;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    background: rgba(216, 27, 96, 0.05);
-    z-index: -1;
-    animation: move 20s infinite linear;
-}
-body::before { top: -100px; left: -100px; }
-body::after { bottom: -100px; right: -100px; background: rgba(255, 255, 255, 0.2); }
-
-@keyframes move {
-    0% { transform: translate(0, 0) rotate(0deg); }
-    50% { transform: translate(100px, 50px) rotate(180deg); }
-    100% { transform: translate(0, 0) rotate(360deg); }
 }
 
 /* NAVBAR */
@@ -101,7 +76,7 @@ section,.hero{min-height:100vh;display:flex;align-items:center;justify-content:c
 .gallery-grid a img{width:100%;height:300px;object-fit:cover;border-radius:25px;transition:0.5s;box-shadow:0 10px 30px rgba(0,0,0,0.1);}
 .gallery-grid a:hover img { transform: scale(1.05); }
 
-/* MUSIC SECTION (TETAP HORIZONTAL SCROLL) */
+/* MUSIC SECTION */
 .music-section{
     background:#fff0f5;
     flex-direction: column;
@@ -161,11 +136,7 @@ audio { display: none; }
 </head>
 <body>
 
-<div class="leaf-decor" style="top: 15%; left: 5%; font-size: 40px;">🌿</div>
-<div class="leaf-decor" style="top: 45%; right: 5%; font-size: 30px; animation-delay: 2s;">🍃</div>
-<div class="leaf-decor" style="bottom: 10%; left: 10%; font-size: 50px; animation-delay: 1s;">🌿</div>
-<div class="leaf-decor" style="top: 70%; right: 15%; font-size: 25px; animation-delay: 4s;">🍃</div>
-<div class="leaf-decor" style="top: 5%; right: 20%; font-size: 35px; animation-delay: 3s;">🌱</div>
+<canvas id="sakura-canvas"></canvas>
 
 <nav>
     <div class="logo">fiiselfi</div>
@@ -318,7 +289,70 @@ audio { display: none; }
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.12.1/simple-lightbox.min.js"></script>
+
 <script>
+// --- SCRIPT SAKURA FALLING ---
+const canvas = document.getElementById('sakura-canvas');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const sakuraArray = [];
+class Sakura {
+    constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height - canvas.height;
+        this.size = Math.random() * 7 + 3;
+        this.speed = Math.random() * 2 + 1;
+        this.angle = Math.random() * 360;
+        this.spin = Math.random() * 0.2 - 0.1;
+    }
+    draw() {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.angle * Math.PI / 180);
+        ctx.beginPath();
+        // Menggambar bentuk kelopak sederhana
+        ctx.ellipse(0, 0, this.size, this.size/2, 0, 0, 2 * Math.PI);
+        ctx.fillStyle = '#ffb7d5';
+        ctx.fill();
+        ctx.restore();
+    }
+    update() {
+        this.y += this.speed;
+        this.x += Math.sin(this.angle) * 0.5;
+        this.angle += this.spin;
+        if (this.y > canvas.height) {
+            this.y = -10;
+            this.x = Math.random() * canvas.width;
+        }
+    }
+}
+
+function initSakura() {
+    for (let i = 0; i < 50; i++) {
+        sakuraArray.push(new Sakura());
+    }
+}
+
+function animateSakura() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    sakuraArray.forEach(s => {
+        s.update();
+        s.draw();
+    });
+    requestAnimationFrame(animateSakura);
+}
+
+window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
+
+initSakura();
+animateSakura();
+
+// --- SCRIPT ASLI (TIDAK BERUBAH) ---
 AOS.init({ duration: 1000 });
 
 function togglePlay(btn) {
