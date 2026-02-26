@@ -19,27 +19,27 @@ body{
     position: relative;
 }
 
-/* --- TAMBAHAN HIASAN BACKGROUND (TIDAK MENGUBAH UI) --- */
-.bg-decor {
+/* --- TAMBAHAN HIASAN EKSTRA --- */
+.floating-decor {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
     z-index: -1;
     pointer-events: none;
+    opacity: 0.5;
 }
+.decor-1 { top: 10%; right: -50px; font-size: 100px; transform: rotate(-20deg); }
+.decor-2 { bottom: 10%; left: -30px; font-size: 80px; transform: rotate(15deg); }
 
-.particle {
+/* Efek Glow pada Container utama agar tidak kosong */
+.hero-container::before {
+    content: "";
     position: absolute;
-    background: rgba(255, 255, 255, 0.4);
-    border-radius: 50%;
-    animation: floatParticle 10s infinite ease-in-out;
-}
-
-@keyframes floatParticle {
-    0%, 100% { transform: translateY(0) translateX(0); opacity: 0.3; }
-    50% { transform: translateY(-100px) translateX(50px); opacity: 0.8; }
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(216, 27, 96, 0.15) 0%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
 }
 
 /* Dekorasi Lingkaran Melayang */
@@ -74,7 +74,7 @@ section,.hero{min-height:100vh;display:flex;align-items:center;justify-content:c
 
 /* HERO */
 .hero-container{display:flex;align-items:center;justify-content:space-between;gap:50px;width:100%;}
-.hero-text h1{font-size:50px;color:#d81b60;margin:10px 0;}
+.hero-text h1{font-size:50px;color:#d81b60;margin:10px 0; text-shadow: 2px 2px 0px rgba(255,255,255,0.5);}
 .hero-text h2{font-size:20px;color:#444;height:30px;}
 .hero-text p{max-width:500px;margin:20px 0;line-height:1.7;color:#555;}
 .btn{background:#d81b60;color:white;padding:12px 30px;border:none;border-radius:30px;cursor:pointer;transition:0.3s;text-decoration:none;display:inline-block;}
@@ -144,6 +144,7 @@ section,.hero{min-height:100vh;display:flex;align-items:center;justify-content:c
     min-width: 190px;
     transition: 0.3s;
 }
+.music-card:hover { transform: translateY(-5px); }
 .album-art { width: 100%; aspect-ratio: 1/1; border-radius: 15px; overflow: hidden; margin-bottom: 10px; }
 .album-art img { width: 100%; height: 100%; object-fit: cover; }
 .music-info h3 { color: #d81b60; font-size: 0.85rem; margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -168,13 +169,8 @@ audio { display: none; }
 </head>
 <body>
 
-<div class="bg-decor">
-    <div class="particle" style="width: 20px; height: 20px; top: 20%; left: 10%; animation-delay: 0s;"></div>
-    <div class="particle" style="width: 15px; height: 15px; top: 50%; left: 80%; animation-delay: 2s;"></div>
-    <div class="particle" style="width: 30px; height: 30px; top: 80%; left: 15%; animation-delay: 4s;"></div>
-    <div class="particle" style="width: 10px; height: 10px; top: 10%; left: 90%; animation-delay: 1s;"></div>
-    <div class="particle" style="width: 25px; height: 25px; top: 70%; left: 60%; animation-delay: 3s;"></div>
-</div>
+<div class="floating-decor decor-1">🌸</div>
+<div class="floating-decor decor-2">✨</div>
 
 <nav>
     <div class="logo">fiiselfi</div>
