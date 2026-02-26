@@ -19,28 +19,7 @@ body{
     position: relative;
 }
 
-/* CANVAS SAKURA */
-#sakura-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    pointer-events: none;
-}
-
-/* HIASAN DAUN VEKTOR */
-.leaf-decor {
-    position: fixed;
-    z-index: -1;
-    opacity: 0.25;
-    pointer-events: none;
-}
-.leaf-tl { top: -30px; left: -30px; width: 280px; transform: rotate(140deg); }
-.leaf-br { bottom: -30px; right: -30px; width: 220px; transform: rotate(-40deg); }
-
-/* PARTIKEL MELAYANG */
+/* --- TAMBAHAN HIASAN BACKGROUND (TIDAK MENGUBAH UI) --- */
 .bg-decor {
     position: fixed;
     top: 0;
@@ -50,12 +29,14 @@ body{
     z-index: -1;
     pointer-events: none;
 }
+
 .particle {
     position: absolute;
     background: rgba(255, 255, 255, 0.4);
     border-radius: 50%;
     animation: floatParticle 10s infinite ease-in-out;
 }
+
 @keyframes floatParticle {
     0%, 100% { transform: translateY(0) translateX(0); opacity: 0.3; }
     50% { transform: translateY(-100px) translateX(50px); opacity: 0.8; }
@@ -127,28 +108,65 @@ section,.hero{min-height:100vh;display:flex;align-items:center;justify-content:c
 .gallery-grid a img{width:100%;height:300px;object-fit:cover;border-radius:25px;transition:0.5s;box-shadow:0 10px 30px rgba(0,0,0,0.1);}
 .gallery-grid a:hover img { transform: scale(1.05); }
 
-/* MUSIC SECTION */
-.music-section{background:#fff0f5; flex-direction: column; align-items: flex-start; padding: 80px 8%;}
-.music-header {color: #d81b60; font-size: 1.5rem; font-weight: 700; margin-bottom: 25px; border-bottom: 3px solid #d81b60;}
-.music-grid {display: flex; overflow-x: auto; gap: 20px; width: 100%; padding-bottom: 25px; scroll-behavior: smooth;}
+/* MUSIC SECTION (TETAP HORIZONTAL SCROLL) */
+.music-section{
+    background:#fff0f5;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    min-height: auto;
+    padding: 80px 8%;
+}
+.music-header {
+    color: #d81b60;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+    border-bottom: 3px solid #d81b60;
+    padding-bottom: 5px;
+}
+.music-grid {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    width: 100%;
+    padding-bottom: 25px;
+    scroll-behavior: smooth;
+}
 .music-grid::-webkit-scrollbar { height: 6px; }
 .music-grid::-webkit-scrollbar-thumb { background: #d81b6055; border-radius: 10px; }
-.music-card {background: white; padding: 12px; border-radius: 20px; box-shadow: 0 8px 25px rgba(216, 27, 96, 0.1); min-width: 190px; transition: 0.3s;}
+
+.music-card {
+    background: white;
+    padding: 12px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(216, 27, 96, 0.1);
+    min-width: 190px;
+    transition: 0.3s;
+}
 .album-art { width: 100%; aspect-ratio: 1/1; border-radius: 15px; overflow: hidden; margin-bottom: 10px; }
 .album-art img { width: 100%; height: 100%; object-fit: cover; }
 .music-info h3 { color: #d81b60; font-size: 0.85rem; margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .music-info p { color: #777; font-size: 0.7rem; }
+
 .controls { display: flex; justify-content: center; align-items: center; gap: 10px; }
 .ctrl-btn { background: none; border: none; color: #d81b60; font-size: 0.8rem; cursor: pointer; }
-.play-btn { background: #d81b60; color: white !important; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.play-btn {
+    background: #d81b60;
+    color: white !important;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 audio { display: none; }
 
 @media(max-width:900px){.hero-container,.about-container{flex-direction:column;text-align:center;}section,.hero{height:auto;padding:80px 8%;}.hero-img img{width:260px;}}
 </style>
 </head>
 <body>
-
-<canvas id="sakura-canvas"></canvas>
 
 <div class="bg-decor">
     <div class="particle" style="width: 20px; height: 20px; top: 20%; left: 10%; animation-delay: 0s;"></div>
@@ -157,13 +175,6 @@ audio { display: none; }
     <div class="particle" style="width: 10px; height: 10px; top: 10%; left: 90%; animation-delay: 1s;"></div>
     <div class="particle" style="width: 25px; height: 25px; top: 70%; left: 60%; animation-delay: 3s;"></div>
 </div>
-
-<svg class="leaf-decor leaf-tl" viewBox="0 0 512 512" fill="#2d5a27">
-    <path d="M430.7 203.2c-56.3-43.1-125.7-65.4-196.4-65.4-31.4 0-62.8 4.4-93.3 13.1 36.6-47.8 93.4-78.9 157.1-78.9 108.3 0 196.1 87.8 196.1 196.1 0 32.7-8 63.6-22.1 90.7 13.5-51.3 2.1-107.5-41.4-155.6zM263.3 439.1c-108.3 0-196.1-87.8-196.1-196.1 0-32.7 8-63.6 22.1-90.7-13.5 51.3-2.1 107.5 41.4 155.6 56.3 43.1 125.7 65.4 196.4 65.4 31.4 0 62.8-4.4 93.3-13.1-36.6 47.8-93.4 78.9-157.1 78.9z"/>
-</svg>
-<svg class="leaf-decor leaf-br" viewBox="0 0 512 512" fill="#2d5a27">
-    <path d="M430.7 203.2c-56.3-43.1-125.7-65.4-196.4-65.4-31.4 0-62.8 4.4-93.3 13.1 36.6-47.8 93.4-78.9 157.1-78.9 108.3 0 196.1 87.8 196.1 196.1 0 32.7-8 63.6-22.1 90.7 13.5-51.3 2.1-107.5-41.4-155.6zM263.3 439.1c-108.3 0-196.1-87.8-196.1-196.1 0-32.7 8-63.6 22.1-90.7-13.5 51.3-2.1 107.5 41.4 155.6 56.3 43.1 125.7 65.4 196.4 65.4 31.4 0 62.8-4.4 93.3-13.1-36.6 47.8-93.4 78.9-157.1 78.9z"/>
-</svg>
 
 <nav>
     <div class="logo">fiiselfi</div>
@@ -222,6 +233,7 @@ audio { display: none; }
 
 <section id="music" class="music-section">
     <div class="music-header" data-aos="fade-right">Playing Music</div>
+    
     <div class="music-grid">
         <div class="music-card" data-aos="zoom-in">
             <div class="album-art"><img src="https://i.imgur.com/tmgEm81.jpeg"></div>
@@ -233,6 +245,7 @@ audio { display: none; }
             </div>
             <audio><source src="https://github.com/orionyx13/asetsmsc.github.io/raw/refs/heads/main/yung%20kai%20blue%20Lyrics.mp3"></audio>
         </div>
+
         <div class="music-card" data-aos="zoom-in" data-aos-delay="100">
             <div class="album-art"><img src="https://i.imgur.com/vol4Nin.jpeg"></div>
             <div class="music-info"><h3>Lihat Kebunku</h3><p>Jeje</p></div>
@@ -243,75 +256,90 @@ audio { display: none; }
             </div>
             <audio><source src="https://github.com/orionyx13/asetsmsc.github.io/raw/refs/heads/main/Aku%20Jeje%20Lihat%20Kebunku%20Taman%20Bunga%20lyricvideo.mp3"></audio>
         </div>
+
+        <div class="music-card" data-aos="zoom-in" data-aos-delay="200">
+            <div class="album-art"><img src="https://i.imgur.com/Tw9bKcG.jpeg"></div>
+            <div class="music-info"><h3>Nina</h3><p>.Feast</p></div>
+            <div class="controls">
+                <button class="ctrl-btn" onclick="replay(this)"><i class="fas fa-redo-alt"></i></button>
+                <button class="ctrl-btn play-btn" onclick="togglePlay(this)"><i class="fas fa-play"></i></button>
+                <button class="ctrl-btn" onclick="skip10(this)"><i class="fas fa-forward"></i></button>
+            </div>
+            <audio><source src="https://github.com/orionyx13/asetsmsc.github.io/raw/refs/heads/main/Feast%20Nina%20Official%20Lyric%20Video.mp3"></audio>
         </div>
+
+        <div class="music-card" data-aos="zoom-in" data-aos-delay="300">
+            <div class="album-art"><img src="https://i.imgur.com/B8iv2rp.jpeg"></div>
+            <div class="music-info"><h3>Sedia Sebelum Hujan</h3><p>Idgitaf</p></div>
+            <div class="controls">
+                <button class="ctrl-btn" onclick="replay(this)"><i class="fas fa-redo-alt"></i></button>
+                <button class="ctrl-btn play-btn" onclick="togglePlay(this)"><i class="fas fa-play"></i></button>
+                <button class="ctrl-btn" onclick="skip10(this)"><i class="fas fa-forward"></i></button>
+            </div>
+            <audio><source src="https://github.com/orionyx13/asetsmsc.github.io/raw/refs/heads/main/Idgitaf%20Sedia%20Aku%20Sebelum%20Hujan%20Official%20Lyric%20Video.mp3"></audio>
+        </div>
+
+        <div class="music-card" data-aos="zoom-in" data-aos-delay="400">
+            <div class="album-art"><img src="https://i.imgur.com/cqGmLOM.jpeg"></div>
+            <div class="music-info"><h3>Kota Ini Tak Sama</h3><p>Nadhif Basalamah</p></div>
+            <div class="controls">
+                <button class="ctrl-btn" onclick="replay(this)"><i class="fas fa-redo-alt"></i></button>
+                <button class="ctrl-btn play-btn" onclick="togglePlay(this)"><i class="fas fa-play"></i></button>
+                <button class="ctrl-btn" onclick="skip10(this)"><i class="fas fa-forward"></i></button>
+            </div>
+            <audio><source src="https://github.com/orionyx13/asetsmsc.github.io/raw/refs/heads/main/Nadhif%20Basalamah%20kota%20ini%20tak%20sama%20tanpamu%20Official%20Lyric%20Video.mp3"></audio>
+        </div>
+
+        <div class="music-card" data-aos="zoom-in" data-aos-delay="500">
+            <div class="album-art"><img src="https://i.imgur.com/S98QBea.jpeg"></div>
+            <div class="music-info"><h3>Lesung Pipi</h3><p>Raim Laode</p></div>
+            <div class="controls">
+                <button class="ctrl-btn" onclick="replay(this)"><i class="fas fa-redo-alt"></i></button>
+                <button class="ctrl-btn play-btn" onclick="togglePlay(this)"><i class="fas fa-play"></i></button>
+                <button class="ctrl-btn" onclick="skip10(this)"><i class="fas fa-forward"></i></button>
+            </div>
+            <audio><source src="https://github.com/orionyx13/asetsmsc.github.io/raw/refs/heads/main/Raim%20Laode%20Lesung%20Pipi%20video%20lirik%20official.mp3"></audio>
+        </div>
+
+        <div class="music-card" data-aos="zoom-in" data-aos-delay="600">
+            <div class="album-art"><img src="https://i.imgur.com/Rm348bL.jpeg"></div>
+            <div class="music-info"><h3>Bunga Maaf</h3><p>The Lantis</p></div>
+            <div class="controls">
+                <button class="ctrl-btn" onclick="replay(this)"><i class="fas fa-redo-alt"></i></button>
+                <button class="ctrl-btn play-btn" onclick="togglePlay(this)"><i class="fas fa-play"></i></button>
+                <button class="ctrl-btn" onclick="skip10(this)"><i class="fas fa-forward"></i></button>
+            </div>
+            <audio><source src="https://github.com/orionyx13/asetsmsc.github.io/raw/refs/heads/main/The%20Lantis%20Bunga%20Maaf%20Visualizer.mp3"></audio>
+        </div>
+
+        <div class="music-card" data-aos="zoom-in" data-aos-delay="700">
+            <div class="album-art"><img src="https://i.imgur.com/qRZbbLM.jpeg"></div>
+            <div class="music-info"><h3>Bunga Sakuraku</h3><p>JKT48</p></div>
+            <div class="controls">
+                <button class="ctrl-btn" onclick="replay(this)"><i class="fas fa-redo-alt"></i></button>
+                <button class="ctrl-btn play-btn" onclick="togglePlay(this)"><i class="fas fa-play"></i></button>
+                <button class="ctrl-btn" onclick="skip10(this)"><i class="fas fa-forward"></i></button>
+            </div>
+            <audio><source src="https://github.com/orionyx13/asetsmsc.github.io/raw/refs/heads/main/JKT48%20Boku%20No%20Sakura%20Bunga%20Sakuraku%20Color%20Coded%20Lyrics.mp3"></audio>
+        </div>
+    </div>
 </section>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.12.1/simple-lightbox.min.js"></script>
 <script>
-// --- SCRIPT SAKURA FALLING ---
-const canvas = document.getElementById('sakura-canvas');
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-const sakuraArray = [];
-class Sakura {
-    constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height - canvas.height;
-        this.size = Math.random() * 7 + 3;
-        this.speed = Math.random() * 2 + 1;
-        this.angle = Math.random() * 360;
-        this.spin = Math.random() * 0.2 - 0.1;
-    }
-    draw() {
-        ctx.save();
-        ctx.translate(this.x, this.y);
-        ctx.rotate(this.angle * Math.PI / 180);
-        ctx.beginPath();
-        ctx.ellipse(0, 0, this.size, this.size/2, 0, 0, 2 * Math.PI);
-        ctx.fillStyle = '#ffb7d5';
-        ctx.fill();
-        ctx.restore();
-    }
-    update() {
-        this.y += this.speed;
-        this.x += Math.sin(this.angle) * 0.5;
-        this.angle += this.spin;
-        if (this.y > canvas.height) {
-            this.y = -10;
-            this.x = Math.random() * canvas.width;
-        }
-    }
-}
-function initSakura() {
-    for (let i = 0; i < 40; i++) { sakuraArray.push(new Sakura()); }
-}
-function animateSakura() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    sakuraArray.forEach(s => { s.update(); s.draw(); });
-    requestAnimationFrame(animateSakura);
-}
-window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-});
-initSakura();
-animateSakura();
-
-// --- SCRIPT ASLI ---
 AOS.init({ duration: 1000 });
 
 function togglePlay(btn) {
     const card = btn.closest('.music-card');
     const audio = card.querySelector('audio');
     const icon = btn.querySelector('i');
+
     if (audio.paused) {
         document.querySelectorAll('audio').forEach(a => {
             a.pause();
             const otherBtnIcon = a.closest('.music-card').querySelector('.play-btn i');
-            if(otherBtnIcon) otherBtnIcon.className = 'fas fa-play';
+            otherBtnIcon.className = 'fas fa-play';
         });
         audio.play();
         icon.className = 'fas fa-pause';
@@ -343,7 +371,9 @@ function typing(){
     }
 }
 typing();
+
 var lightbox = new SimpleLightbox('.gallery-grid a', { captions: false });
 </script>
+
 </body>
 </html>
